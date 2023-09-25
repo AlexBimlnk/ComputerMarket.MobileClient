@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileClient.Logic", "ComputerMarket.MobileClient\MobileClient.Logic.csproj", "{D5A2A924-F99F-4E7D-A3A1-9BE597FA3C0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileClient.Logic", "MobileClient.Logic\MobileClient.Logic.csproj", "{D5A2A924-F99F-4E7D-A3A1-9BE597FA3C0E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileClient.UI", "MobileClient.UI\MobileClient.UI.csproj", "{E7AF9368-6FF5-471B-B4B4-99126AF1D9E2}"
 EndProject
