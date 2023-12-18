@@ -1,24 +1,28 @@
-﻿namespace MobileClient.UI
+﻿using MobileClient.Logic;
+
+namespace MobileClient.UI;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    int count = 0;
+
+    private readonly IHttpClientFacade _httpClientFacade;
+
+    public MainPage(IHttpClientFacade facade)
     {
-        int count = 0;
+        _httpClientFacade = facade ?? throw new ArgumentNullException(nameof(facade));
+        InitializeComponent();
+    }
 
-        public MainPage()
-        {
-            InitializeComponent();
-        }
+    private void OnCounterClicked(object sender, EventArgs e)
+    {
+        count++;
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
+        if (count == 1)
+            CounterBtn.Text = $"Clicked {count} time";
+        else
+            CounterBtn.Text = $"Clicked {count} times";
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
+        SemanticScreenReader.Announce(CounterBtn.Text);
     }
 }
