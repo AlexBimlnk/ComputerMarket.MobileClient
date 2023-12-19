@@ -1,13 +1,29 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using MobileClient.Contract.BasketController;
 using MobileClient.Logic;
+using MobileClient.Logic.Account;
+using MobileClient.Logic.Configuration;
+using MobileClient.Logic.Transport;
 
 namespace MobileClient.UI;
 
 public static class Registration
 {
     public static IServiceCollection AddMyServices(this IServiceCollection services, IConfiguration configuration)
+        => services
+            .AddTransport()
+            .AddLogic()
+            .AddSerialization()
+            .AddConfig(configuration);
+
+    private static IServiceCollection AddLogic(this IServiceCollection services)
+        => services
+            .AddSingleton<ILoginHandler, LoginHandler>()
+            .AddSingleton<IBasketAccessor, BasketAccessor>();
+
+    private static IServiceCollection AddTransport(this IServiceCollection services)
         => services
             .AddHttp();
 
@@ -24,6 +40,15 @@ public static class Registration
             .AddSingleton<IHttpClientFacade, HttpClientFacade>();
 
     private static IServiceCollection AddSerialization(this IServiceCollection services)
-        => services;
-            //.AddSingleton<IDeserializer<HttpResponseMessage>, HttpClientFacade>();
+        => services
+            .AddSingleton(typeof(ISerializer<,>), typeof(StringSerializer<,>))
+            .AddSingleton(typeof(IDeserializer<,>), typeof(HttpResponseDeserializer<,>));
+            //.AddSingleton<
+            //    IDeserializer<HttpResponseMessage, PurchasableEntity>, 
+            //    HttpResponseDeserializer<PurchasableEntity, HttpResponseMessage>>();
+        //.AddSingleton<IDeserializer<HttpResponseMessage>, HttpClientFacade>();
+
+    private static IServiceCollection AddConfig(this IServiceCollection services, IConfiguration configuration)
+        => services
+            .Configure<ServiceConfig>(configuration.GetSection(nameof(ServiceConfig)));
 }
