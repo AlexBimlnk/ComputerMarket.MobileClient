@@ -7,6 +7,7 @@ using MobileClient.Logic.Account;
 using MobileClient.Logic.Basket;
 using MobileClient.Logic.Builder;
 using MobileClient.Logic.Configuration;
+using MobileClient.Logic.Orders;
 using MobileClient.Logic.Transport;
 
 namespace MobileClient.UI;
@@ -24,6 +25,7 @@ public static class Registration
         => services
             .AddSingleton<ILoginHandler, LoginHandler>()
             .AddSingleton<IBasketAccessor, BasketAccessor>()
+            .AddSingleton<IOrdersAccessor, OrdersAccessor>()
             .AddSingleton<IBuilderAccessor, BuilderAccessor>();
 
     private static IServiceCollection AddTransport(this IServiceCollection services)
@@ -45,9 +47,6 @@ public static class Registration
     private static IServiceCollection AddSerialization(this IServiceCollection services)
         => services
             .AddSingleton(typeof(ISerializer<,>), typeof(StringSerializer<,>))
-            //.AddSingleton<
-            //    IDeserializer<HttpResponseMessage, BuildResult>, 
-            //    HttpResponseDeserializer<HttpResponseMessage, BuildResult>>()
             .AddSingleton(typeof(IDeserializer<,>), typeof(HttpResponseDeserializer<,>));
 
     private static IServiceCollection AddConfig(this IServiceCollection services, IConfiguration configuration)
