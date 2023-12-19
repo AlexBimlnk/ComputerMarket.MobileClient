@@ -43,10 +43,6 @@ public static class Registration
         => services
             .AddSingleton(typeof(ISerializer<,>), typeof(StringSerializer<,>))
             .AddSingleton(typeof(IDeserializer<,>), typeof(HttpResponseDeserializer<,>));
-            //.AddSingleton<
-            //    IDeserializer<HttpResponseMessage, PurchasableEntity>, 
-            //    HttpResponseDeserializer<PurchasableEntity, HttpResponseMessage>>();
-        //.AddSingleton<IDeserializer<HttpResponseMessage>, HttpClientFacade>();
 
     private static IServiceCollection AddConfig(this IServiceCollection services, IConfiguration configuration)
         => services
