@@ -2,6 +2,7 @@
 using MobileClient.Logic.Account;
 using MobileClient.Logic.Basket;
 using MobileClient.Logic.Builder;
+using MobileClient.Logic.Orders;
 
 namespace MobileClient.UI;
 
@@ -12,15 +13,18 @@ public partial class MainPage : ContentPage
     private readonly ILoginHandler _loginHandler; // login works
     private readonly IBasketAccessor _basketAccessor; // all works
     private readonly IBuilderAccessor _builderAccessor;
+    private readonly IOrdersAccessor _ordersAccessor;
 
     public MainPage(
         ILoginHandler loginHandler,
         IBasketAccessor basketAccessor,
-        IBuilderAccessor builderAccessor)
+        IBuilderAccessor builderAccessor,
+        IOrdersAccessor ordersAccessor)
     {
         _loginHandler = loginHandler ?? throw new ArgumentNullException(nameof(loginHandler));
         _basketAccessor = basketAccessor ?? throw new ArgumentNullException(nameof(basketAccessor));
         _builderAccessor = builderAccessor ?? throw new ArgumentNullException(nameof(builderAccessor));
+        _ordersAccessor = ordersAccessor ?? throw new ArgumentNullException(nameof(ordersAccessor));
 
         InitializeComponent();
     }
@@ -57,6 +61,14 @@ public partial class MainPage : ContentPage
         var bad = await _builderAccessor.GetBuildResultAsync(badRequest); // 500 error need check market
     }
 
+    public async Task TestOrdersAsync()
+    {
+        var result = await _ordersAccessor.GetOrdersAsync();
+        var r2 = await _ordersAccessor.GetOrderByIdAsync(1);
+
+
+    }
+
     private async void OnCounterClickedAsync(object sender, EventArgs e)
     {
         count++;
@@ -68,7 +80,8 @@ public partial class MainPage : ContentPage
         });
 
         //await TestBasketAsync();
-        await TestBuilderAsync();
+        //await TestBuilderAsync();
+        await TestOrdersAsync();
 
         if (count == 1)
             CounterBtn.Text = $"Clicked {count} time";
