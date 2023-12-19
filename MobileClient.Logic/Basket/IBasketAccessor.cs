@@ -1,6 +1,6 @@
 ﻿using MobileClient.Contract.BasketController;
 
-namespace MobileClient.Logic;
+namespace MobileClient.Logic.Basket;
 public interface IBasketAccessor
 {
     public Task<IReadOnlyCollection<PurchasableEntity>> GetPurchasableEntitiesAsync();

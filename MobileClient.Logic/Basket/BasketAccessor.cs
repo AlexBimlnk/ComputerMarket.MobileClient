@@ -4,7 +4,7 @@ using MobileClient.Contract.BasketController;
 using MobileClient.Logic.Configuration;
 using MobileClient.Logic.Transport;
 
-namespace MobileClient.Logic;
+namespace MobileClient.Logic.Basket;
 
 public sealed class BasketAccessor : IBasketAccessor
 {
