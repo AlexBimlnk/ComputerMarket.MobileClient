@@ -6,11 +6,16 @@ public partial class MainPage : ContentPage
 {
     int count = 0;
 
-    private readonly IHttpClientFacade _httpClientFacade;
+    private readonly ILoginHandler _loginHandler;
 
-    public MainPage(IHttpClientFacade facade)
+    public MainPage(ILoginHandler loginHandler)
     {
-        _httpClientFacade = facade ?? throw new ArgumentNullException(nameof(facade));
+        _loginHandler = loginHandler ?? throw new ArgumentNullException(nameof(loginHandler));
+        _loginHandler.LogIn(new Contract.AccountController.Login
+        {
+            Email = "centuriin@yandex.ru",
+            Password = "12345678",
+        }).Wait();
         InitializeComponent();
     }
 

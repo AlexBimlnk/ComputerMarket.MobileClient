@@ -22,6 +22,7 @@ public sealed class HttpClientFacade : IHttpClientFacade
         }
     }
 
-    public Task<HttpResponseMessage> PostAsync(string url, HttpContent content) =>
-        _httpClient.PostAsync(url, content);
+    public async Task<HttpResponseMessage> PostAsync(string url, HttpContent content) =>
+         await _httpClient.PostAsync(url, content)
+            .ConfigureAwait(false);
 }
