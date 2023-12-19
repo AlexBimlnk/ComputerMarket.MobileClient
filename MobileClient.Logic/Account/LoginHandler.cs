@@ -30,6 +30,8 @@ public sealed class LoginHandler : ILoginHandler
 
     public async Task Register(Register register)
     {
+        ArgumentNullException.ThrowIfNull(register);
+
         var result = await _httpClientFacade.PostAsync(
                 $"{_serviceConfig.MarketService}/account/api/register",
                 new StringContent(_registerSerializer.Serialize(register), Encoding.UTF8, "application/json"))
@@ -41,6 +43,8 @@ public sealed class LoginHandler : ILoginHandler
 
     public async Task LogInAsync(Login login)
     {
+        ArgumentNullException.ThrowIfNull(login);
+
         var result = await _httpClientFacade.PostAsync(
                 $"{_serviceConfig.MarketService}/account/api/login",
                 new StringContent(_loginSerializer.Serialize(login), Encoding.UTF8, "application/json"))
