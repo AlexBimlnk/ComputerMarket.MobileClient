@@ -1,7 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
+using MobileClient.Contract.BasketController;
 using MobileClient.Logic;
+using MobileClient.Logic.Account;
 using MobileClient.Logic.Configuration;
+using MobileClient.Logic.Transport;
 
 namespace MobileClient.UI;
 
@@ -16,7 +20,8 @@ public static class Registration
 
     private static IServiceCollection AddLogic(this IServiceCollection services)
         => services
-            .AddSingleton<ILoginHandler, LoginHandler>();
+            .AddSingleton<ILoginHandler, LoginHandler>()
+            .AddSingleton<IBasketAccessor, BasketAccessor>();
 
     private static IServiceCollection AddTransport(this IServiceCollection services)
         => services
@@ -36,7 +41,11 @@ public static class Registration
 
     private static IServiceCollection AddSerialization(this IServiceCollection services)
         => services
-            .AddSingleton(typeof(ISerializer<,>), typeof(StringSerializer<,>));
+            .AddSingleton(typeof(ISerializer<,>), typeof(StringSerializer<,>))
+            .AddSingleton(typeof(IDeserializer<,>), typeof(HttpResponseDeserializer<,>));
+            //.AddSingleton<
+            //    IDeserializer<HttpResponseMessage, PurchasableEntity>, 
+            //    HttpResponseDeserializer<PurchasableEntity, HttpResponseMessage>>();
         //.AddSingleton<IDeserializer<HttpResponseMessage>, HttpClientFacade>();
 
     private static IServiceCollection AddConfig(this IServiceCollection services, IConfiguration configuration)

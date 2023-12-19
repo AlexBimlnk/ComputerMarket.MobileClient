@@ -4,8 +4,9 @@ using Microsoft.Extensions.Options;
 
 using MobileClient.Contract.AccountController;
 using MobileClient.Logic.Configuration;
+using MobileClient.Logic.Transport;
 
-namespace MobileClient.Logic;
+namespace MobileClient.Logic.Account;
 
 public sealed class LoginHandler : ILoginHandler
 {
@@ -35,12 +36,10 @@ public sealed class LoginHandler : ILoginHandler
             .ConfigureAwait(false);
 
         if (!result.IsSuccessStatusCode)
-        {
             throw new InvalidOperationException();
-        }
     }
 
-    public async Task LogIn(Login login)
+    public async Task LogInAsync(Login login)
     {
         var result = await _httpClientFacade.PostAsync(
                 $"{_serviceConfig.MarketService}/account/api/login",
@@ -48,20 +47,16 @@ public sealed class LoginHandler : ILoginHandler
             .ConfigureAwait(false);
 
         if (!result.IsSuccessStatusCode)
-        {
             throw new InvalidOperationException();
-        }
     }
 
-    public async Task LogOut()
+    public async Task LogOutAsync()
     {
         var result = await _httpClientFacade.PostAsync(
                 $"{_serviceConfig.MarketService}/account/api/logout", null!)
             .ConfigureAwait(false);
 
         if (!result.IsSuccessStatusCode)
-        {
             throw new InvalidOperationException();
-        }
     }
 }

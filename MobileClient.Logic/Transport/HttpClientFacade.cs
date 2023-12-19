@@ -1,4 +1,4 @@
-﻿namespace MobileClient.Logic;
+﻿namespace MobileClient.Logic.Transport;
 public sealed class HttpClientFacade : IHttpClientFacade
 {
     private readonly HttpClient _httpClient;
@@ -11,9 +11,7 @@ public sealed class HttpClientFacade : IHttpClientFacade
     public async Task<HttpResponseMessage> GetAsync(string url, HttpContent content = null)
     {
         if (content == null)
-        {
             return await _httpClient.GetAsync(url);
-        }
         else
         {
             var request = new HttpRequestMessage(HttpMethod.Get, url);

@@ -1,4 +1,4 @@
-﻿namespace MobileClient.Logic;
+﻿namespace MobileClient.Logic.Transport;
 
 public interface IDeserializer<TSource, TTrarget>
 {

@@ -1,9 +1,9 @@
 ﻿using MobileClient.Contract.AccountController;
 
-namespace MobileClient.Logic;
+namespace MobileClient.Logic.Account;
 public interface ILoginHandler
 {
-    Task LogIn(Login login);
-    Task LogOut();
+    Task LogInAsync(Login login);
+    Task LogOutAsync();
     Task Register(Register register);
 }

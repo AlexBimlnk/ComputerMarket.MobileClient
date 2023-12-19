@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace MobileClient.Logic;
+namespace MobileClient.Logic.Transport;
 
-public sealed class HttpResponseDeserializer<TTarget> : IDeserializer<HttpResponseMessage, TTarget>
+public sealed class HttpResponseDeserializer<TSource, TTarget> : IDeserializer<HttpResponseMessage, TTarget>
 {
     public TTarget Deserialize(HttpResponseMessage source)
     {
