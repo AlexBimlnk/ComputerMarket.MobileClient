@@ -14,17 +14,20 @@ public partial class MainPage : ContentPage
     private readonly IBasketAccessor _basketAccessor; // all works
     private readonly IBuilderAccessor _builderAccessor;
     private readonly IOrdersAccessor _ordersAccessor;
+    private readonly ILinksAccessor _linksAccessor;
 
     public MainPage(
         ILoginHandler loginHandler,
         IBasketAccessor basketAccessor,
         IBuilderAccessor builderAccessor,
-        IOrdersAccessor ordersAccessor)
+        IOrdersAccessor ordersAccessor,
+        ILinksAccessor linksAccessor)
     {
         _loginHandler = loginHandler ?? throw new ArgumentNullException(nameof(loginHandler));
         _basketAccessor = basketAccessor ?? throw new ArgumentNullException(nameof(basketAccessor));
         _builderAccessor = builderAccessor ?? throw new ArgumentNullException(nameof(builderAccessor));
         _ordersAccessor = ordersAccessor ?? throw new ArgumentNullException(nameof(ordersAccessor));
+        _linksAccessor = linksAccessor ?? throw new ArgumentNullException(nameof(linksAccessor));
 
         InitializeComponent();
     }
@@ -65,8 +68,11 @@ public partial class MainPage : ContentPage
     {
         var result = await _ordersAccessor.GetOrdersAsync();
         var r2 = await _ordersAccessor.GetOrderByIdAsync(1);
+    }
 
-
+    public async Task TestLinksAsync()
+    {
+        var result = await _linksAccessor.GetLinksAsync();
     }
 
     private async void OnCounterClickedAsync(object sender, EventArgs e)
@@ -81,7 +87,8 @@ public partial class MainPage : ContentPage
 
         //await TestBasketAsync();
         //await TestBuilderAsync();
-        await TestOrdersAsync();
+        //await TestOrdersAsync();
+        //await TestLinksAsync();
 
         if (count == 1)
             CounterBtn.Text = $"Clicked {count} time";

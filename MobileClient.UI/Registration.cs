@@ -26,6 +26,7 @@ public static class Registration
             .AddSingleton<ILoginHandler, LoginHandler>()
             .AddSingleton<IBasketAccessor, BasketAccessor>()
             .AddSingleton<IOrdersAccessor, OrdersAccessor>()
+            .AddSingleton<ILinksAccessor, LinksAccessor>()
             .AddSingleton<IBuilderAccessor, BuilderAccessor>();
 
     private static IServiceCollection AddTransport(this IServiceCollection services)
