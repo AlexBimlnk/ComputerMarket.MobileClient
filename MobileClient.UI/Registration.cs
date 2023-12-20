@@ -6,6 +6,7 @@ using MobileClient.Logic.Builder;
 using MobileClient.Logic.Configuration;
 using MobileClient.Logic.Links;
 using MobileClient.Logic.Orders;
+using MobileClient.Logic.Providers;
 using MobileClient.Logic.Reports;
 using MobileClient.Logic.Transport;
 
@@ -27,6 +28,7 @@ public static class Registration
             .AddSingleton<IOrdersAccessor, OrdersAccessor>()
             .AddSingleton<ILinksAccessor, LinksAccessor>()
             .AddSingleton<IReportsAccessor, ReportsAccessor>()
+            .AddSingleton<IProviderAccessor, ProviderAccessor>()
             .AddSingleton<IBuilderAccessor, BuilderAccessor>();
 
     private static IServiceCollection AddTransport(this IServiceCollection services)
