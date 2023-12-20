@@ -7,7 +7,7 @@ using MobileClient.Contract.Orders;
 using MobileClient.Logic.Configuration;
 using MobileClient.Logic.Transport;
 
-namespace MobileClient.Logic.Orders;
+namespace MobileClient.Logic.Links;
 public sealed class LinksAccessor : ILinksAccessor
 {
     private readonly IHttpClientFacade _httpClientFacade;

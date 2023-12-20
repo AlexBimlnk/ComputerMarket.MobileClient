@@ -1,6 +1,6 @@
 ﻿using MobileClient.Contract.Links;
 
-namespace MobileClient.Logic.Orders;
+namespace MobileClient.Logic.Links;
 public interface ILinksAccessor
 {
     Task<IReadOnlyCollection<Link>> GetLinksAsync();

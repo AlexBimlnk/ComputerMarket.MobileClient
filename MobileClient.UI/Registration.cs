@@ -1,13 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
-using MobileClient.Contract.BasketController;
-using MobileClient.Contract.Builder;
 using MobileClient.Logic.Account;
 using MobileClient.Logic.Basket;
 using MobileClient.Logic.Builder;
 using MobileClient.Logic.Configuration;
+using MobileClient.Logic.Links;
 using MobileClient.Logic.Orders;
+using MobileClient.Logic.Reports;
 using MobileClient.Logic.Transport;
 
 namespace MobileClient.UI;
@@ -27,6 +26,7 @@ public static class Registration
             .AddSingleton<IBasketAccessor, BasketAccessor>()
             .AddSingleton<IOrdersAccessor, OrdersAccessor>()
             .AddSingleton<ILinksAccessor, LinksAccessor>()
+            .AddSingleton<IReportsAccessor, ReportsAccessor>()
             .AddSingleton<IBuilderAccessor, BuilderAccessor>();
 
     private static IServiceCollection AddTransport(this IServiceCollection services)
