@@ -36,7 +36,7 @@ public sealed class ItemProperty
     /// <summary xml:lang = "ru">
     /// Тип данных, который хранится в свойстве.
     /// </summary>
-    [JsonProperty("propertyDataType")]
+    [JsonProperty("properyDataType")]
     public int DataType { get; set; }
 
     public PropertyDataType PropertyDataType => (PropertyDataType)DataType;

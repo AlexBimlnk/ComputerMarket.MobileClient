@@ -2,7 +2,9 @@
 using MobileClient.Logic.Account;
 using MobileClient.Logic.Basket;
 using MobileClient.Logic.Builder;
+using MobileClient.Logic.Links;
 using MobileClient.Logic.Orders;
+using MobileClient.Logic.Products;
 
 namespace MobileClient.UI;
 
@@ -15,19 +17,22 @@ public partial class MainPage : ContentPage
     private readonly IBuilderAccessor _builderAccessor;
     private readonly IOrdersAccessor _ordersAccessor;
     private readonly ILinksAccessor _linksAccessor;
+    private readonly IProductsAccessor _productsAccessor;
 
     public MainPage(
         ILoginHandler loginHandler,
         IBasketAccessor basketAccessor,
         IBuilderAccessor builderAccessor,
         IOrdersAccessor ordersAccessor,
-        ILinksAccessor linksAccessor)
+        ILinksAccessor linksAccessor,
+        IProductsAccessor productsAccessor)
     {
         _loginHandler = loginHandler ?? throw new ArgumentNullException(nameof(loginHandler));
         _basketAccessor = basketAccessor ?? throw new ArgumentNullException(nameof(basketAccessor));
         _builderAccessor = builderAccessor ?? throw new ArgumentNullException(nameof(builderAccessor));
         _ordersAccessor = ordersAccessor ?? throw new ArgumentNullException(nameof(ordersAccessor));
         _linksAccessor = linksAccessor ?? throw new ArgumentNullException(nameof(linksAccessor));
+        _productsAccessor = productsAccessor ?? throw new ArgumentNullException(nameof(productsAccessor));
 
         InitializeComponent();
     }
@@ -75,6 +80,18 @@ public partial class MainPage : ContentPage
         var result = await _linksAccessor.GetLinksAsync();
     }
 
+    public async Task TestProductsAsync()
+    {
+        var categories = await _productsAccessor.GetCategoriesAsync();
+
+        var product = await _productsAccessor.GetProductAsync(1, 1);
+
+        var catalog = await _productsAccessor.GetCatalogAsync(new Contract.Products.Catalog
+        {
+            TypeId = 1, // processor
+        });
+    }
+
     private async void OnCounterClickedAsync(object sender, EventArgs e)
     {
         count++;
@@ -89,6 +106,8 @@ public partial class MainPage : ContentPage
         //await TestBuilderAsync();
         //await TestOrdersAsync();
         //await TestLinksAsync();
+
+        await TestProductsAsync();
 
         if (count == 1)
             CounterBtn.Text = $"Clicked {count} time";

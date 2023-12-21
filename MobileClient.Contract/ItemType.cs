@@ -7,15 +7,15 @@ public sealed class ItemType
     /// Название типа.
     /// </summary>
     [JsonProperty("name")]
-    public string Name { get; }
+    public string Name { get; set; }
 
     /// <summary xml:lang = "ru">
     /// Индетификатор типа продукта.
     /// </summary>
     [JsonProperty("id")]
-    public int Id { get; }
+    public int Id { get; set; }
 
     /// <inheritdoc/>
     [JsonProperty("url")]
-    public string? URL { get; }
+    public string? URL { get; set; }
 }
