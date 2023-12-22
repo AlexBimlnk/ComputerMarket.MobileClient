@@ -7,11 +7,11 @@ public sealed class PropertyGroup
     /// Идентифкатор группы.
     /// </summary>
     [JsonProperty("id")]
-    public ID Id { get; }
+    public ID Id { get; set; }
 
     /// <summary xml:lang = "ru">
     /// Название группы.
     /// </summary>
     [JsonProperty("name")]
-    public string Name { get; }
+    public string Name { get; set; }
 }

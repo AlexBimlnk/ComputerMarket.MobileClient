@@ -6,18 +6,18 @@ public sealed class Link
     /// <summary xml:lang = "ru">
     /// Внешний идентификатор.
     /// </summary>
-    [JsonProperty("internalId")]
+    [JsonProperty("internalID")]
     public ID InternalID { get; set; }
 
     /// <summary xml:lang = "ru">
     /// Внутренний идентификатор.
     /// </summary>
-    [JsonProperty("externalId")]
+    [JsonProperty("externalID")]
     public ID ExternalID { get; set; }
 
     /// <summary xml:lang = "ru">
     /// Идентификатор поставщика.
     /// </summary>
-    [JsonProperty("providerId")]
+    [JsonProperty("providerID")]
     public ID ProviderID { get; set; }
 }

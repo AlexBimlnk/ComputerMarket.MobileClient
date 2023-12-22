@@ -13,23 +13,23 @@ public sealed class Item
     /// Тип товара.
     /// </summary>
     [JsonProperty("type")]
-    public ItemType Type { get; }
+    public ItemType Type { get; set; }
 
     /// <summary xml:lang = "ru">
     /// Название товара.
     /// </summary>
     [JsonProperty("name")]
-    public string Name { get; }
+    public string Name { get; set; }
 
     /// <summary xml:lang = "ru">
     /// Характеристики товара.
     /// </summary>
     [JsonProperty("properties")]
-    public IReadOnlyCollection<ItemProperty> Properties { get; }
+    public IReadOnlyCollection<ItemProperty> Properties { get; set; }
 
     [JsonProperty("key")]
-    public ID Key { get; }
+    public ID Key { get; set; }
 
     [JsonProperty("url")]
-    public string? URL { get; }
+    public string? URL { get; set; }
 }
