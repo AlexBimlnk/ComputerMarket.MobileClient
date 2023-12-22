@@ -37,7 +37,7 @@ public sealed class ProviderAccessor : IProviderAccessor
     {
         _httpClientFacade = httpClientFacade ?? throw new ArgumentNullException(nameof(httpClientFacade));
         _serviceConfig = options.Value ?? throw new ArgumentNullException(nameof(options));
-        
+
         _providersDeserializer = providersDeserializer ?? throw new ArgumentNullException(nameof(providersDeserializer));
         _agentsDeserializer = agentsDeserializer ?? throw new ArgumentNullException(nameof(agentsDeserializer));
         _ordersDeserializer = ordersDeserializer ?? throw new ArgumentNullException(nameof(ordersDeserializer));

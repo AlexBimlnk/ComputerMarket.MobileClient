@@ -22,24 +22,33 @@ public partial class HomePage : ContentPage
     private readonly IProductsAccessor _productsAccessor;
     private readonly IProviderAccessor _providerAccessor;
 
-       
+
     public HomePage(
         ILoginHandler loginHandler,
         IBasketAccessor basketAccessor,
         IBuilderAccessor builderAccessor,
         IOrdersAccessor ordersAccessor,
+<<<<<<< HEAD:MobileClient.UI/Pages/HomePage.xaml.cs
+        ILinksAccessor linksAccessor
+    )
+=======
         ILinksAccessor linksAccessor,
         IProductsAccessor productsAccessor,
         IProviderAccessor providerAccessor)
+>>>>>>> origin/master:MobileClient.UI/MainPage.xaml.cs
     {
         _loginHandler = loginHandler ?? throw new ArgumentNullException(nameof(loginHandler));
         _basketAccessor = basketAccessor ?? throw new ArgumentNullException(nameof(basketAccessor));
         _builderAccessor = builderAccessor ?? throw new ArgumentNullException(nameof(builderAccessor));
         _ordersAccessor = ordersAccessor ?? throw new ArgumentNullException(nameof(ordersAccessor));
         _linksAccessor = linksAccessor ?? throw new ArgumentNullException(nameof(linksAccessor));
+<<<<<<< HEAD:MobileClient.UI/Pages/HomePage.xaml.cs
+
+=======
         _productsAccessor = productsAccessor ?? throw new ArgumentNullException(nameof(productsAccessor));
         _providerAccessor = providerAccessor ?? throw new ArgumentNullException(nameof(providerAccessor));
 
+>>>>>>> origin/master:MobileClient.UI/MainPage.xaml.cs
         InitializeComponent();
 
         WeakReferenceMessenger.Default.Register<AddProductMessage>(this, (r, m) =>
@@ -91,7 +100,28 @@ public partial class HomePage : ContentPage
         var result = await _linksAccessor.GetLinksAsync();
     }
 
+<<<<<<< HEAD:MobileClient.UI/Pages/HomePage.xaml.cs
+    private void MenuFlyoutItem_ParentChanged(System.Object sender, System.EventArgs e)
+=======
+    public async Task TestProductsAsync()
+    {
+        var categories = await _productsAccessor.GetCategoriesAsync();
+
+        var product = await _productsAccessor.GetProductAsync(1, 1);
+
+        var catalog = await _productsAccessor.GetCatalogAsync(new Contract.Products.Catalog
+        {
+            TypeId = 1, // processor
+        });
+    }
+
+    public async Task TestProviderAsync()
+    {
+        var a = await _providerAccessor.GetOrdersRelatedWithAuthProviderAsync();
+    }
+
     private async void OnCounterClickedAsync(object sender, EventArgs e)
+>>>>>>> origin/master:MobileClient.UI/MainPage.xaml.cs
     {
         if (sender is BindableObject bo)
             bo.BindingContext = BindingContext;
@@ -109,6 +139,7 @@ public partial class HomePage : ContentPage
 
         await TestBasketAsync();
 
+<<<<<<< HEAD:MobileClient.UI/Pages/HomePage.xaml.cs
         var displayWidth = DeviceDisplay.Current.MainDisplayInfo.Width;
 
         if (show)
@@ -120,6 +151,14 @@ public partial class HomePage : ContentPage
             addForm.TranslationX = displayWidth - addForm.X;
             addForm.TranslateTo(0, 0, 800, easing: Easing.CubicOut);
         }
+=======
+        //await TestProductsAsync();
+
+        await TestProviderAsync();
+
+        if (count == 1)
+            CounterBtn.Text = $"Clicked {count} time";
+>>>>>>> origin/master:MobileClient.UI/MainPage.xaml.cs
         else
         {
             // remove the product window

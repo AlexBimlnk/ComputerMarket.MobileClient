@@ -1,12 +1,12 @@
 ﻿using CommunityToolkit.Maui;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Maui.LifecycleEvents;
-using Microsoft.Maui.Platform;
 
-using SkiaSharp.Views.Maui.Controls.Hosting;
-using Microsoft.Extensions.Configuration;
 using MobileClient.UI;
 using MobileClient.UI.Pages;
+
+using SkiaSharp.Views.Maui.Controls.Hosting;
 
 
 #if WINDOWS

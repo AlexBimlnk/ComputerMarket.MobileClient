@@ -1,7 +1,4 @@
-﻿using System.Net;
-
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
 
 using MobileClient.Logic.Account;
 using MobileClient.Logic.Basket;
