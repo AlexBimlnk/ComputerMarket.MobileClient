@@ -5,6 +5,7 @@ using MobileClient.Logic.Builder;
 using MobileClient.Logic.Links;
 using MobileClient.Logic.Orders;
 using MobileClient.Logic.Products;
+using MobileClient.Logic.Providers;
 
 namespace MobileClient.UI;
 
@@ -18,6 +19,7 @@ public partial class MainPage : ContentPage
     private readonly IOrdersAccessor _ordersAccessor;
     private readonly ILinksAccessor _linksAccessor;
     private readonly IProductsAccessor _productsAccessor;
+    private readonly IProviderAccessor _providerAccessor;
 
     public MainPage(
         ILoginHandler loginHandler,
@@ -25,7 +27,8 @@ public partial class MainPage : ContentPage
         IBuilderAccessor builderAccessor,
         IOrdersAccessor ordersAccessor,
         ILinksAccessor linksAccessor,
-        IProductsAccessor productsAccessor)
+        IProductsAccessor productsAccessor,
+        IProviderAccessor providerAccessor)
     {
         _loginHandler = loginHandler ?? throw new ArgumentNullException(nameof(loginHandler));
         _basketAccessor = basketAccessor ?? throw new ArgumentNullException(nameof(basketAccessor));
@@ -33,6 +36,7 @@ public partial class MainPage : ContentPage
         _ordersAccessor = ordersAccessor ?? throw new ArgumentNullException(nameof(ordersAccessor));
         _linksAccessor = linksAccessor ?? throw new ArgumentNullException(nameof(linksAccessor));
         _productsAccessor = productsAccessor ?? throw new ArgumentNullException(nameof(productsAccessor));
+        _providerAccessor = providerAccessor ?? throw new ArgumentNullException(nameof(providerAccessor));
 
         InitializeComponent();
     }
@@ -92,13 +96,18 @@ public partial class MainPage : ContentPage
         });
     }
 
+    public async Task TestProviderAsync()
+    {
+        var a = await _providerAccessor.GetOrdersRelatedWithAuthProviderAsync();
+    }
+
     private async void OnCounterClickedAsync(object sender, EventArgs e)
     {
         count++;
 
         await _loginHandler.LogInAsync(new Contract.AccountController.Login
         {
-            Email = "centuriin@yandex.ru",
+            Email = "agent@mail.ru",
             Password = "12345678"
         });
 
@@ -107,7 +116,9 @@ public partial class MainPage : ContentPage
         //await TestOrdersAsync();
         //await TestLinksAsync();
 
-        await TestProductsAsync();
+        //await TestProductsAsync();
+
+        await TestProviderAsync();
 
         if (count == 1)
             CounterBtn.Text = $"Clicked {count} time";
