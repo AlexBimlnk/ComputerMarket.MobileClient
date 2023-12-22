@@ -5,6 +5,8 @@ using MobileClient.Logic.Basket;
 using MobileClient.Logic.Builder;
 using MobileClient.Logic.Links;
 using MobileClient.Logic.Orders;
+using MobileClient.Logic.Products;
+using MobileClient.Logic.Providers;
 
 using MobileClient.UI.Messages;
 
@@ -17,6 +19,8 @@ public partial class HomePage : ContentPage
     private readonly IBuilderAccessor _builderAccessor;
     private readonly IOrdersAccessor _ordersAccessor;
     private readonly ILinksAccessor _linksAccessor;
+    private readonly IProductsAccessor _productsAccessor;
+    private readonly IProviderAccessor _providerAccessor;
 
        
     public HomePage(
@@ -24,15 +28,18 @@ public partial class HomePage : ContentPage
         IBasketAccessor basketAccessor,
         IBuilderAccessor builderAccessor,
         IOrdersAccessor ordersAccessor,
-        ILinksAccessor linksAccessor
-    )
+        ILinksAccessor linksAccessor,
+        IProductsAccessor productsAccessor,
+        IProviderAccessor providerAccessor)
     {
         _loginHandler = loginHandler ?? throw new ArgumentNullException(nameof(loginHandler));
         _basketAccessor = basketAccessor ?? throw new ArgumentNullException(nameof(basketAccessor));
         _builderAccessor = builderAccessor ?? throw new ArgumentNullException(nameof(builderAccessor));
         _ordersAccessor = ordersAccessor ?? throw new ArgumentNullException(nameof(ordersAccessor));
         _linksAccessor = linksAccessor ?? throw new ArgumentNullException(nameof(linksAccessor));
-        
+        _productsAccessor = productsAccessor ?? throw new ArgumentNullException(nameof(productsAccessor));
+        _providerAccessor = providerAccessor ?? throw new ArgumentNullException(nameof(providerAccessor));
+
         InitializeComponent();
 
         WeakReferenceMessenger.Default.Register<AddProductMessage>(this, (r, m) =>
@@ -84,7 +91,7 @@ public partial class HomePage : ContentPage
         var result = await _linksAccessor.GetLinksAsync();
     }
 
-    private void MenuFlyoutItem_ParentChanged(System.Object sender, System.EventArgs e)
+    private async void OnCounterClickedAsync(object sender, EventArgs e)
     {
         if (sender is BindableObject bo)
             bo.BindingContext = BindingContext;
@@ -96,7 +103,7 @@ public partial class HomePage : ContentPage
     {
         await _loginHandler.LogInAsync(new MobileClient.Contract.AccountController.Login
         {
-            Email = "centuriin@yandex.ru",
+            Email = "agent@mail.ru",
             Password = "12345678"
         });
 

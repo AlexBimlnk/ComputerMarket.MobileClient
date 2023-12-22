@@ -14,7 +14,7 @@ public sealed class Product
     /// Описание продукта.
     /// </summary>
     [JsonProperty("item")]
-    public Item Item { get; }
+    public Item Item { get; set; }
 
     /// <summary xml:lang = "ru">
     /// Цена назначаенная поставщиком.

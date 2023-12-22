@@ -14,9 +14,17 @@ public sealed class HttpClientFacade : IHttpClientFacade
             return await _httpClient.GetAsync(url);
         else
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, url);
-            request.Content = content;
-            return await _httpClient.SendAsync(request);
+            var st = await content.ReadAsStringAsync();
+
+            using var request = new HttpRequestMessage
+            {
+                Content = content,
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(url)
+            };
+
+            return await _httpClient.SendAsync(request)
+                .ConfigureAwait(false);
         }
     }
 
