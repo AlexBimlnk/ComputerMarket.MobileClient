@@ -19,12 +19,12 @@
     <ContentPage.MenuBarItems>
         <MenuBarItem Text="File">
             <MenuFlyoutItem Text="Preferences"
-                            ParentChanged="MenuFlyoutItem_ParentChanged"
+                            ParentChanged="MenuFlyoutItemParentChanged"
                             Command="{Binding PreferencesCommand}" />
         </MenuBarItem>
         <MenuBarItem Text="Products">
             <MenuFlyoutItem Text="Add Product" Command="{Binding AddProductCommand}"
-                            ParentChanged="MenuFlyoutItem_ParentChanged"/>
+                            ParentChanged="MenuFlyoutItemParentChanged"/>
             <MenuFlyoutItem Text="Add Product Category"/>
         </MenuBarItem>
     </ContentPage.MenuBarItems>

@@ -2,7 +2,21 @@
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:p="clr-namespace:MobileClient.UI.Pages.Handheld"
+             xmlns:pages="clr-namespace:MobileClient.UI.Pages"
              x:Class="MobileClient.UI.AppShellMobile"
              Title="AppShellMobile">
-    <ShellContent ContentTemplate="{DataTemplate p:OrdersPage}" Route="orders"/>
+    <TabBar>
+        <ShellContent Title="Home"
+                     
+                     ContentTemplate="{DataTemplate pages:HomePage}" />
+        <ShellContent Title="Catalog"
+             
+             ContentTemplate="{DataTemplate pages:CatalogPage}" />
+        <ShellContent Title="Basket"
+             
+             ContentTemplate="{DataTemplate pages:BasketPage}" />
+        <ShellContent Title="Profile"
+                     
+                     ContentTemplate="{DataTemplate pages:ProfilePage}" />
+    </TabBar>
 </Shell>

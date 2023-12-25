@@ -229,7 +229,7 @@ static class IconFont
     public const string Cube = "\uf1b2";
     public const string Cubes = "\uf1b3";
     public const string Cut = "\uf0c4";
-    public const string Database = "\uf1c0";
+    public const string _database = "\uf1c0";
     public const string Deaf = "\uf2a4";
     public const string Democrat = "\uf747";
     public const string Desktop = "\uf108";

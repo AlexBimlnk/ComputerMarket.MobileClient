@@ -1,9 +1,13 @@
 ﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Markup;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Maui.LifecycleEvents;
+using Microsoft.Maui.Platform;
 
 using MobileClient.UI;
+using MobileClient.UI.Pages;
+
 using MobileClient.UI.Pages;
 
 using SkiaSharp.Views.Maui.Controls.Hosting;
@@ -36,6 +40,7 @@ public static class MauiProgram
         builder
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
+            .UseMauiCommunityToolkitMarkup()
             .UseSkiaSharp()
             .ConfigureFonts(fonts =>
             {
@@ -45,7 +50,8 @@ public static class MauiProgram
                 fonts.AddFont("fabmdl2.ttf", "Fabric");
             })
             .Services.AddMyServices(builder.Configuration)
-            .AddSingleton<DashboardPage>()
+            .AddSingleton<CatalogPage>()
+            .AddSingleton<ProfilePage>()
             .AddSingleton<HomePage>();
 
         builder.Services.AddMauiBlazorWebView();

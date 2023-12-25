@@ -1,4 +1,7 @@
-﻿namespace MobileClient.UI;
+﻿using Android.App;
+using Android.Runtime;
+
+namespace MobileClient.UI;
 
 [Application]
 public class MainApplication : MauiApplication

@@ -16,8 +16,5 @@ public class CheckedColorConverter : IValueConverter
     }
 
 
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        return (string)value;
-    }
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => (string)value;
 }

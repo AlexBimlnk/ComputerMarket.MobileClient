@@ -31,6 +31,7 @@ public static class Registration
             .AddSingleton<IReportsAccessor, ReportsAccessor>()
             .AddSingleton<IProviderAccessor, ProviderAccessor>()
             .AddSingleton<IProductsAccessor, ProductsAccessor>()
+            .AddSingleton<ISignInManager, SignInManager>()
             .AddSingleton<IBuilderAccessor, BuilderAccessor>();
 
     private static IServiceCollection AddTransport(this IServiceCollection services)

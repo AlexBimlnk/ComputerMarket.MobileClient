@@ -15,8 +15,8 @@ public static class FabIconFont
     public static string SchemaCompare = "\uE307";
     public static string Pipeline = "\uE308";
     public static string PipelineShare = "\uE309";
-    public static string DatabaseSource = "\uE30A";
-    public static string DatabaseDestination = "\uE30B";
+    public static string _databaseSource = "\uE30A";
+    public static string _databaseDestination = "\uE30B";
     public static string GlobalNavButton = "\uE700";
     public static string Wifi = "\uE701";
     public static string Bluetooth = "\uE702";
@@ -2264,7 +2264,7 @@ public static class FabIconFont
     public static string BulletListBlock = "\uEFC4";
     public static string BulletListAdd = "\uEFC5";
     public static string SalesReport = "\uEFC6";
-    public static string Database = "\uEFC7";
+    public static string _database = "\uEFC7";
     public static string DataManagementSettings = "\uEFC8";
     public static string MergeCase = "\uEFC9";
     public static string CampaignList = "\uEFCA";
@@ -3279,7 +3279,7 @@ public static class FabIconFont
     public static string Offboarding = "\uF3BB";
     public static string Transition = "\uF3BC";
     public static string BusinessProcess = "\uF3BD";
-    public static string FormatDatabase = "\uF3BE";
+    public static string Format_database = "\uF3BE";
     public static string LikeSolid = "\uF3BF";
     public static string DislikeSolid = "\uF3C0";
     public static string CRMFieldServiceApp = "\uF3C1";
@@ -3787,8 +3787,8 @@ public static class FabIconFont
     public static string AddBookmark = "\uF5B7";
     public static string SearchBookmark = "\uF5B8";
     public static string DrillThrough = "\uF5B9";
-    public static string MasterDatabase = "\uF5BA";
-    public static string CertifiedDatabase = "\uF5BB";
+    public static string Master_database = "\uF5BA";
+    public static string Certified_database = "\uF5BB";
     public static string MaximumValue = "\uF5BC";
     public static string MinimumValue = "\uF5BD";
     public static string Infrastructure = "\uF5BE";
@@ -4227,11 +4227,11 @@ public static class FabIconFont
     public static string SurfaceHeadphoneArt310 = "\uF776";
     public static string SurfaceHeadphoneSolid = "\uF777";
     public static string SurfaceHeadphoneApp = "\uF778";
-    public static string LinkedDatabase = "\uF779";
+    public static string Linked_database = "\uF779";
     public static string TableLink = "\uF77A";
     public static string GameClubs = "\uF77B";
     public static string EngagementHub = "\uF77C";
-    public static string PromotedDatabase = "\uF77D";
+    public static string Promoted_database = "\uF77D";
     public static string BarChartVerticalFilter = "\uF77E";
     public static string BarChartVerticalFilterSolid = "\uF77F";
     public static string NotificationZeroState = "\uF780";
@@ -4428,7 +4428,7 @@ public static class FabIconFont
     public static string UpdateStatusDot = "\uF83F";
     public static string StoryboardImport = "\uF840";
     public static string ExitKiosk = "\uF841";
-    public static string DatabaseSync = "\uF842";
+    public static string _databaseSync = "\uF842";
     public static string Wrench48 = "\uF843";
     public static string DeviceFamily = "\uF844";
     public static string ReservationOrders = "\uF845";

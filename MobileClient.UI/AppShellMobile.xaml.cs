@@ -1,4 +1,5 @@
-﻿using MobileClient.UI.Pages.Handheld;
+﻿using MobileClient.UI.Pages;
+using MobileClient.UI.Pages.Handheld;
 
 namespace MobileClient.UI;
 
@@ -18,5 +19,6 @@ public partial class AppShellMobile : Shell
         Routing.RegisterRoute(nameof(PayPage), typeof(PayPage));
         Routing.RegisterRoute(nameof(SignaturePage), typeof(SignaturePage));
         Routing.RegisterRoute(nameof(ReceiptPage), typeof(ReceiptPage));
+        Routing.RegisterRoute(nameof(ProductPage), typeof(ProductPage));
     }
 }

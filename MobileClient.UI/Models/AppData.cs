@@ -8,7 +8,7 @@ public static class AppData
 
     public static List<Item> Items = new List<Item>
     {
-        new Item(){ Title = "Japchae", Price    = 13.99, Quantity = 1, Image = "japchae.png", Category = ItemCategory.Noodles},
+        new Item(){ Title = "Japchae", Price = 13.99, Quantity = 1, Image = "japchae.png", Category = ItemCategory.Noodles},
         new Item(){ Title = "Jajangmyeon", Price = 14.99, Quantity = 1, Image = "jajangmyeon.png", Category = ItemCategory.Noodles},
         new Item(){ Title = "Janchi Guksu", Price = 12.99, Quantity = 1, Image = "janchi_guksu.png", Category = ItemCategory.Noodles},
         new Item(){ Title = "Budae Jjigae", Price = 14.99, Quantity = 1, Image = "budae_jjigae.png", Category = ItemCategory.Noodles},
