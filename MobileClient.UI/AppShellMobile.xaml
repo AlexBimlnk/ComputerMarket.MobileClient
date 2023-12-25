@@ -6,16 +6,16 @@
              x:Class="MobileClient.UI.AppShellMobile"
              Title="AppShellMobile">
     <TabBar>
-        <ShellContent Title="Home"
+        <ShellContent Title="Home" Route="home"
                      
                      ContentTemplate="{DataTemplate pages:HomePage}" />
-        <ShellContent Title="Catalog"
+        <ShellContent Title="Catalog" Route="catalog"
              
              ContentTemplate="{DataTemplate pages:CatalogPage}" />
-        <ShellContent Title="Basket"
+        <ShellContent Title="Basket" Route="basket"
              
              ContentTemplate="{DataTemplate pages:BasketPage}" />
-        <ShellContent Title="Profile"
+        <ShellContent Title="Profile" Route="profile"
                      
                      ContentTemplate="{DataTemplate pages:ProfilePage}" />
     </TabBar>

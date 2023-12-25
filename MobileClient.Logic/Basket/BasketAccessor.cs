@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 
+using MobileClient.Contract;
 using MobileClient.Contract.BasketController;
 using MobileClient.Logic.Configuration;
 using MobileClient.Logic.Transport;
@@ -30,6 +31,20 @@ public sealed class BasketAccessor : IBasketAccessor
         if (!result.IsSuccessStatusCode)
             throw new InvalidOperationException();
     }
+
+    public async Task CreateOrderAsync(IReadOnlySet<(ID, ID)> toOrder)
+    {
+        foreach(var entities in await GetPurchasableEntitiesAsync())
+        {
+            var key = entities.Product.Key;
+
+            if (toOrder.Contains(key))
+            {
+                await DeleteFromBasketAsync(entities.Product.Provider.Key.Value, entities.Product.Item.Key.Value);
+            }
+        }
+    }
+
     public async Task DecreaseInBasketAsync(long providerId, long itemId)
     {
         var result = await _httpClientFacade.GetAsync(

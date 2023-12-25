@@ -11,7 +11,7 @@
     <TabBar>
         <ShellContent Title="Home"
                  
-                 ContentTemplate="{DataTemplate pages:HomePage}" />
+                 ContentTemplate="{DataTemplate pages:HomePage}"/>
         <ShellContent Title="Catalog"
          
          ContentTemplate="{DataTemplate pages:CatalogPage}" />

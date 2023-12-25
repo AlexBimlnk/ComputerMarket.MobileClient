@@ -54,7 +54,6 @@ public static class MauiProgram
             .AddSingleton<ProfilePage>()
             .AddSingleton<HomePage>();
 
-        builder.Services.AddMauiBlazorWebView();
 
 #if WINDOWS
         builder.ConfigureLifecycleEvents(events =>

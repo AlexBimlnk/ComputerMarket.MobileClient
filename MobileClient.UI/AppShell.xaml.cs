@@ -1,4 +1,5 @@
 using MobileClient.UI.Pages;
+using MobileClient.UI.Pages.Handheld;
 
 namespace MobileClient.UI;
 
@@ -11,7 +12,16 @@ public partial class AppShell : Shell
         InitRoutes();
     }
 
-    private void InitRoutes() => Routing.RegisterRoute(nameof(AddProductView), typeof(AddProductView));
+    private void InitRoutes()
+    {
+        Routing.RegisterRoute(nameof(OrderDetailsPage), typeof(OrderDetailsPage));
+        Routing.RegisterRoute(nameof(TipPage), typeof(TipPage));
+        Routing.RegisterRoute(nameof(PayPage), typeof(PayPage));
+        Routing.RegisterRoute(nameof(SignaturePage), typeof(SignaturePage));
+        Routing.RegisterRoute(nameof(ReceiptPage), typeof(ReceiptPage));
+        Routing.RegisterRoute(nameof(ProductPage), typeof(ProductPage));
+        Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
+    }
 
     private string _selectedRoute;
     public string SelectedRoute
