@@ -4,9 +4,55 @@
              x:Class="MobileClient.UI.Pages.BasketPage"
              Title="BasketPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Button Clicked="SaveButtonClickAsync" Text="Save" WidthRequest="100" HorizontalOptions="Start" />
+
+
+        <CollectionView ItemsSource="{Binding Products}" SelectionMode="Single" x:Name="listView">
+            <CollectionView.Header>
+                <Label Text= "Список" FontSize="18" FontAttributes="Bold" />
+            </CollectionView.Header>
+            <CollectionView.Footer>
+                <Label Text= "Январь 2023г." FontSize="14" FontAttributes="Italic" />
+            </CollectionView.Footer>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="1"
+                            Text="{Binding Product.Item.Name}"
+                            FontAttributes="Bold" />
+                        <Label Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding Product.Provider.Name}"
+                            FontAttributes="Italic"
+                            VerticalOptions="End" />
+                        <Label Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding Quantity}"
+                            FontAttributes="Italic"
+                            VerticalOptions="End" />
+                        <Button Text="+" 
+                            Command="{Binding Source={x:Reference listView},
+                            Path=BindingContext.AddCommand}"
+                            CommandParameter="{Binding}"/>
+                        <Button Text="-" 
+                            Command="{Binding Source={x:Reference listView},
+                            Path=BindingContext.RemoveCommand}"
+                            CommandParameter="{Binding}"/>              
+                        <Button Text="Remove" 
+                            Command="{Binding Source={x:Reference listView},
+                            Path=BindingContext.DeleteCommand}"
+                            CommandParameter="{Binding}"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>

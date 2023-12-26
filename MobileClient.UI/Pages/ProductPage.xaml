@@ -4,23 +4,22 @@
              xmlns:models="clr-namespace:MobileClient.Contract;assembly=MobileClient.Contract"
              x:Class="MobileClient.UI.Pages.ProductPage"
              Title="ProductPage"
-             x:DataType="models:Product"
              >
     <ScrollView>
         <VerticalStackLayout Padding="20"
                          Spacing="10"
                          VerticalOptions="StartAndExpand">
             <Image Grid.RowSpan="3"
-                Source="{Binding Item.URL}"
+                Source="{Binding Image}"
                 Aspect="AspectFill"
                 HeightRequest="60"
                 WidthRequest="60" />
             <Label Grid.Column="1"
-                Text="{Binding Item.Name}"
+                Text="{Binding ProductName}"
                 FontAttributes="Bold" />
             <Label Grid.Row="1"
                 Grid.Column="1"
-                Text="{Binding Provider.Name}"
+                Text="{Binding ProviderName}"
                 FontAttributes="Italic"
                 VerticalOptions="End" />
         </VerticalStackLayout>

@@ -55,6 +55,8 @@ public static class MauiProgram
             .AddSingleton<ProfilePage>()
             .AddSingleton<FilterPage>()
             .AddSingleton<LoginPage>()
+            .AddSingleton<BasketPage>()
+            .AddSingleton<ProductPage>()
             .AddSingleton<HomePage>();
 
 
