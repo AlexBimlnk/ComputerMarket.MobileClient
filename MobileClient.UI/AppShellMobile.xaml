@@ -11,10 +11,10 @@
     <TabBar>
         <ShellContent Title="Home" Route="home"
                      
-                     ContentTemplate="{DataTemplate pages:HomePage}" />
+                     ContentTemplate="{DataTemplate pages:HomePageView}" />
         <ShellContent Title="Catalog" Route="catalog"
              
-             ContentTemplate="{DataTemplate pages:CatalogPage}" />
+             ContentTemplate="{DataTemplate pages:CatalogPageView}" />
         <ShellContent Title="Basket" Route="basket"
              
              ContentTemplate="{DataTemplate pages:BasketPage}" />

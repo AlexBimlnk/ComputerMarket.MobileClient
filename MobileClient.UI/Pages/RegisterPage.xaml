@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileClient.UI.Pages.LoginPage"
-             Title="LoginPage">
+             x:Class="MobileClient.UI.Pages.RegisterPage"
+             Title="RegisterPage">
     <StackLayout Orientation="Vertical">
         <Entry x:Name="emailEntry" Margin="5" Placeholder = "Enter email" />
+        <Entry x:Name="loginEntry" Margin="5" Placeholder = "Enter login" />
         <Entry x:Name="passwordEntry" Margin="5" Placeholder = "Enter password" />
+        <Entry x:Name="repeatEntry" Margin="5" Placeholder = "Repeat password" />
         <Button Clicked="SaveButtonClickedAsync" Text="Enter" WidthRequest="100" HorizontalOptions="Start" />
-        <Button Clicked="RegisterClikcAsync" Text="Register" WidthRequest="100" HorizontalOptions="Start" />
     </StackLayout>
 </ContentPage>

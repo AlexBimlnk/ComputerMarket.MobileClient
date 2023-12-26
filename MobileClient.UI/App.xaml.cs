@@ -8,7 +8,7 @@ public partial class App : Application
 
         App.Current.UserAppTheme = AppTheme.Dark;
 
-        if (DeviceInfo.Idiom == DeviceIdiom.Phone)
+        if (DeviceInfo.Idiom == DeviceIdiom.Phone ||  true)
         {
             MainPage = new AppShellMobile();
         }

@@ -10,13 +10,10 @@
     
     
     <CollectionView ItemsSource="{Binding Products}" SelectionMode="Single" SelectionChanged="OnCollectionViewSelectionChangedAsync">
-        <CollectionView.Header>
-            <Label Text= "Список" FontSize="18" FontAttributes="Bold" />
-        </CollectionView.Header>
-        <CollectionView.Footer>
-            <Label Text= "Январь 2023г." FontSize="14" FontAttributes="Italic" />
-        </CollectionView.Footer>
-        <CollectionView.ItemTemplate>
+            <CollectionView.Header>
+                <Label Text= "Список" FontSize="18" FontAttributes="Bold" />
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Grid Padding="10">
                     <Grid.RowDefinitions>

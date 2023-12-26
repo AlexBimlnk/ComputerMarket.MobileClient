@@ -5,12 +5,9 @@
              VerticalOptions="FillAndExpand">
     <VerticalStackLayout>
         <Label 
-        Text="Hello, manager"
-        VerticalOptions="Center" 
-        HorizontalOptions="Center" />
-        <Button Clicked="SaveButtonClickAsync" Text="Save" WidthRequest="100" HorizontalOptions="Start" />
-        <Button Clicked="SaveButtonClickAsync" Text="Save" WidthRequest="100" HorizontalOptions="Start" />
-        <Button Clicked="SaveButtonClickAsync" Text="Save" WidthRequest="100" HorizontalOptions="Start" />
-        <Button Clicked="SaveButtonClickAsync" Text="Save" WidthRequest="100" HorizontalOptions="Start" />
+            Text="Hello, manager"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Button Clicked="SaveButtonClickAsync" Text="Link" WidthRequest="100" HorizontalOptions="Start" />
     </VerticalStackLayout>
 </ContentView>

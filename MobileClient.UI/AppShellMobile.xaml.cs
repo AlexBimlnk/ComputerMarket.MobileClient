@@ -23,8 +23,10 @@ public partial class AppShellMobile : Shell
         Routing.RegisterRoute(nameof(PayPage), typeof(PayPage));
         Routing.RegisterRoute(nameof(SignaturePage), typeof(SignaturePage));
         Routing.RegisterRoute(nameof(ReceiptPage), typeof(ReceiptPage));
-        Routing.RegisterRoute(nameof(ProductPage), typeof(ProductPage));
-        Routing.RegisterRoute(nameof(FilterPage), typeof(FilterPage));
+        Routing.RegisterRoute(nameof(CatalogProductPageView), typeof(CatalogProductPageView));
+        Routing.RegisterRoute(nameof(FilterPageView), typeof(FilterPageView));
+        Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
+        Routing.RegisterRoute(nameof(LinkPage), typeof(LinkPage));
     }
 
     public bool IsLogged

@@ -1,15 +1,15 @@
-using MobileClient.Contract;
 using MobileClient.Contract.AccountController;
-using MobileClient.Logic.Account;
+using MobileClient.Contract;
 using MobileClient.UI.Helpers;
+using MobileClient.Logic.Account;
 
 namespace MobileClient.UI.Pages;
 
-public partial class LoginPage : ContentPage
+public partial class RegisterPage : ContentPage
 {
     private readonly ISignInManager _manager;
 
-    public LoginPage()
+    public RegisterPage()
     {
         _manager = ServiceHelper.GetService<ISignInManager>();
         InitializeComponent();
@@ -20,10 +20,12 @@ public partial class LoginPage : ContentPage
         User? user = null;
         try
         {
-            await _manager.LoginAsync(new Login()
+            await _manager.RegisterAsync(new Register()
             {
+                Login = loginEntry.Text,
                 Email = emailEntry.Text,
-                Password = passwordEntry.Text
+                Password = passwordEntry.Text,
+                ConfirmPassword = passwordEntry.Text
             });
 
             user = await _manager.GetCurrentUserAsync();
@@ -33,10 +35,7 @@ public partial class LoginPage : ContentPage
             return;
         }
 
-        IsVisible = false;                          
+        IsVisible = false;
         await (Shell.Current as AppShellMobile).CheckUserAsync();
     }
-
-    private async void RegisterClikcAsync(object sender, EventArgs e) => 
-        await Shell.Current.GoToAsync(nameof(RegisterPage), true, new Dictionary<string, object>());
 }

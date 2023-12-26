@@ -19,7 +19,7 @@ namespace MobileClient.UI.Pages;
 
 public partial class HomePage : ContentPage
 {
-    private readonly ISignInManager _loginHandler; // login works
+    
     private readonly IProductsAccessor _productsAccessor;
     
 
@@ -27,7 +27,6 @@ public partial class HomePage : ContentPage
         ISignInManager loginHandler,
         IProductsAccessor productsAccessor)
     {
-        _loginHandler = loginHandler ?? throw new ArgumentNullException(nameof(loginHandler));
         _productsAccessor = productsAccessor ?? throw new ArgumentNullException(nameof(productsAccessor));
 
         InitializeComponent();

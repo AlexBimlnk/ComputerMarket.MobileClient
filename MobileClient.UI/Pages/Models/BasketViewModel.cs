@@ -1,38 +1,35 @@
-using MobileClient.Contract.Products;
-using MobileClient.Contract;
-using MobileClient.Logic.Account;
-using MobileClient.Logic.Products;
-using MobileClient.Logic.Basket;
+﻿using System.Windows.Input;
+
 using MobileClient.Contract.BasketController;
-using System.Windows.Input;
+using MobileClient.Logic.Basket;
 
-namespace MobileClient.UI.Pages;
+namespace MobileClient.UI.Pages.Models;
 
-public partial class BasketPage : ContentPage
+public class BasketViewModel
 {
     private readonly IBasketAccessor _accessor;
-    
-    public BasketPage(IBasketAccessor basket)
+    public BasketViewModel(IBasketAccessor basketAccessor)
     {
-        InitializeComponent();
-        _accessor = basket ?? throw new ArgumentNullException(nameof(basket));
-        BindingContext = this;
+        _accessor = basketAccessor;
     }
 
     public ObservableCollection<PurchasableEntity> Products { get; set; } = new();
 
-    protected override async void OnNavigatedTo(NavigatedToEventArgs args) => await UpdateBasketAsync();
-
-    private async Task UpdateBasketAsync()
+    public async Task ReloadDataAsync()
     {
-        var task = await _accessor.GetPurchasableEntitiesAsync();
-
+        var result = await _accessor.GetPurchasableEntitiesAsync();
         Products.Clear();
 
-        foreach (var pr in task)
+        foreach (var pr in result)
         {
             Products.Add(pr);
         }
+    }
+
+    public async Task CreateAsync()
+    {
+        throw new NotImplementedException();
+        var a = 2;
     }
 
 #pragma warning disable CA1822 // Mark members as static
@@ -61,14 +58,6 @@ public partial class BasketPage : ContentPage
         {
             await _accessor.DeleteFromBasketAsync(entity.Product.Provider.Key.Value, entity.Product.Item.Key.Value);
         }
-        await UpdateBasketAsync();
-    }
-
-    private async void SaveButtonClickAsync(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync(nameof(FilterPage), true, new Dictionary<string, object>
-        {
-            
-        });
+        await ReloadDataAsync();
     }
 }

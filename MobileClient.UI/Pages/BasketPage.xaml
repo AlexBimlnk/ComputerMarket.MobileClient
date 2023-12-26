@@ -7,24 +7,15 @@
         <Button Clicked="SaveButtonClickAsync" Text="Save" WidthRequest="100" HorizontalOptions="Start" />
 
 
-        <CollectionView ItemsSource="{Binding Products}" SelectionMode="Single" x:Name="listView">
+        <CollectionView ItemsSource="{Binding Products}" x:Name="listView">
             <CollectionView.Header>
                 <Label Text= "Список" FontSize="18" FontAttributes="Bold" />
             </CollectionView.Header>
-            <CollectionView.Footer>
-                <Label Text= "Январь 2023г." FontSize="14" FontAttributes="Italic" />
-            </CollectionView.Footer>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
+                    <VerticalStackLayout Padding="20"
+                         Spacing="10"
+                         VerticalOptions="StartAndExpand">
                         <Label Grid.Column="1"
                             Text="{Binding Product.Item.Name}"
                             FontAttributes="Bold" />
@@ -45,12 +36,12 @@
                         <Button Text="-" 
                             Command="{Binding Source={x:Reference listView},
                             Path=BindingContext.RemoveCommand}"
-                            CommandParameter="{Binding}"/>              
+                            CommandParameter="{Binding}"/>
                         <Button Text="Remove" 
                             Command="{Binding Source={x:Reference listView},
                             Path=BindingContext.DeleteCommand}"
                             CommandParameter="{Binding}"/>
-                    </Grid>
+                    </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

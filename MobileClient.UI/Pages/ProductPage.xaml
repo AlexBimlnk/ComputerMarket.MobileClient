@@ -10,18 +10,19 @@
                          Spacing="10"
                          VerticalOptions="StartAndExpand">
             <Image Grid.RowSpan="3"
-                Source="{Binding Image}"
+                Source="{Binding Item.URL}"
                 Aspect="AspectFill"
                 HeightRequest="60"
                 WidthRequest="60" />
             <Label Grid.Column="1"
-                Text="{Binding ProductName}"
+                Text="{Binding Item.Name}"
                 FontAttributes="Bold" />
             <Label Grid.Row="1"
                 Grid.Column="1"
-                Text="{Binding ProviderName}"
+                Text="{Binding Provider.Name}"
                 FontAttributes="Italic"
                 VerticalOptions="End" />
+            <Button Clicked="SaveButtonClickAsync" Text="ToBasket" WidthRequest="100" HorizontalOptions="Start" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

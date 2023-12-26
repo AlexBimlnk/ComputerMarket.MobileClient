@@ -16,8 +16,6 @@ public partial class ManagerUserView : ContentView
         BindingContext = this;
 	}
 
-    private async void SaveButtonClickAsync(object sender, EventArgs e)
-    {
-        
-    }
+    private async void SaveButtonClickAsync(object sender, EventArgs e) => 
+        await Shell.Current.GoToAsync(nameof(LinkPage), true, new Dictionary<string, object>());
 }

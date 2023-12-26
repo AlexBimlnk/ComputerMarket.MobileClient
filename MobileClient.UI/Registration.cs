@@ -11,6 +11,8 @@ using MobileClient.Logic.Products;
 using MobileClient.Logic.Providers;
 using MobileClient.Logic.Reports;
 using MobileClient.Logic.Transport;
+using MobileClient.UI.Pages;
+using MobileClient.UI.Pages.Models;
 
 namespace MobileClient.UI;
 
@@ -21,7 +23,9 @@ public static class Registration
             .AddTransport()
             .AddLogic()
             .AddSerialization()
-            .AddConfig(configuration);
+            .AddConfig(configuration)
+            .AddViewModels()
+            .AddPages();
 
     private static IServiceCollection AddLogic(this IServiceCollection services)
         => services
@@ -73,4 +77,18 @@ public static class Registration
     private static IServiceCollection AddConfig(this IServiceCollection services, IConfiguration configuration)
         => services
             .Configure<ServiceConfig>(configuration.GetSection(nameof(ServiceConfig)));
+
+    private static IServiceCollection AddPages(this IServiceCollection services) =>
+        services
+            .AddSingleton<CatalogPageView>()
+            .AddSingleton<FilterPageView>()
+            .AddSingleton<CatalogProductPageView>()
+            .AddSingleton<HomePageView>();
+
+    private static IServiceCollection AddViewModels(this IServiceCollection services) =>
+        services
+            .AddSingleton<CatalogViewModel>()
+            .AddSingleton<CatalogProductViewModel>()
+            .AddSingleton<FilterViewModel>()
+            .AddSingleton<HomeViewModel>();
 }

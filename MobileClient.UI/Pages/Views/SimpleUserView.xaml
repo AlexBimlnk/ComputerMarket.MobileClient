@@ -8,7 +8,7 @@
             Text="Hello, customer"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Button Clicked="SaveButtonClickAsync" Text="Save" WidthRequest="100" HorizontalOptions="Start" />
+        
 
     </VerticalStackLayout>
     
