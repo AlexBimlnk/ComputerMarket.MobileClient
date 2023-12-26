@@ -12,5 +12,5 @@ public interface IBasketAccessor
 
     public Task DecreaseInBasketAsync(long providerId, long itemId);
 
-    public Task CreateOrderAsync(IReadOnlySet<(ID, ID)> toOrder);
+    public Task CreateOrderAsync(IReadOnlySet<(ID itemId, ID providerId)> toOrder);
 }

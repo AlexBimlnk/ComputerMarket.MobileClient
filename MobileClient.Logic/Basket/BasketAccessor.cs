@@ -2,6 +2,7 @@
 
 using MobileClient.Contract;
 using MobileClient.Contract.BasketController;
+using MobileClient.Contract.Builder;
 using MobileClient.Logic.Configuration;
 using MobileClient.Logic.Transport;
 
@@ -32,17 +33,25 @@ public sealed class BasketAccessor : IBasketAccessor
             throw new InvalidOperationException();
     }
 
-    public async Task CreateOrderAsync(IReadOnlySet<(ID, ID)> toOrder)
+    public async Task CreateOrderAsync(IReadOnlySet<(ID itemId, ID providerId)> toOrder)
     {
-        foreach(var entities in await GetPurchasableEntitiesAsync())
-        {
-            var key = entities.Product.Key;
+        ArgumentNullException.ThrowIfNull(toOrder);
 
-            if (toOrder.Contains(key))
-            {
-                await DeleteFromBasketAsync(entities.Product.Provider.Key.Value, entities.Product.Item.Key.Value);
-            }
-        }
+        var selectedRequest = string.Join(
+            ",",
+            toOrder.Select(pair => $"{pair.itemId}_{pair.providerId}"));
+
+        var content = new FormUrlEncodedContent(new[]
+        {
+            new KeyValuePair<string,string>("Selected", selectedRequest),
+        });
+
+        var result = await _httpClientFacade.PostAsync(
+            $"{_serviceConfig.MarketService}/basket/api/create_order",
+            content);
+
+        if (!result.IsSuccessStatusCode)
+            throw new InvalidOperationException();
     }
 
     public async Task DecreaseInBasketAsync(long providerId, long itemId)
