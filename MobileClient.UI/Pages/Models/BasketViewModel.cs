@@ -28,8 +28,12 @@ public class BasketViewModel
 
     public async Task CreateAsync()
     {
-        throw new NotImplementedException();
-        var a = 2;
+        var items = await _accessor.GetPurchasableEntitiesAsync();
+
+        var toOrder = items.Select(x => (x.Product.Item.Key, x.Product.Provider.Key)).ToHashSet();
+
+        await _accessor.CreateOrderAsync(toOrder);
+        await ReloadDataAsync();
     }
 
 #pragma warning disable CA1822 // Mark members as static

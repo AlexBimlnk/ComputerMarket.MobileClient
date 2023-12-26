@@ -11,7 +11,7 @@ public class BasketPageView : ContentPage
         BindingContext = model;
         var button = new Button
         {
-            Text = "Order",
+            Text = "Заказ",
             WidthRequest = 200,
             HorizontalOptions = LayoutOptions.Start
         };
@@ -78,4 +78,6 @@ public class BasketPageView : ContentPage
 			}
 		};
 	}
+
+    protected async override void OnNavigatedTo(NavigatedToEventArgs args) => await(BindingContext as BasketViewModel).ReloadDataAsync();
 }

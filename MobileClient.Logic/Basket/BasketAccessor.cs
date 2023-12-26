@@ -49,7 +49,7 @@ public sealed class BasketAccessor : IBasketAccessor
         var result = await _httpClientFacade.PostAsync(
             $"{_serviceConfig.MarketService}/basket/api/create_order",
             content);
-
+        
         if (!result.IsSuccessStatusCode)
             throw new InvalidOperationException();
     }

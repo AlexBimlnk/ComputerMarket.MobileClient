@@ -17,7 +17,7 @@
              ContentTemplate="{DataTemplate pages:CatalogPageView}" />
         <ShellContent Title="Basket" Route="basket"
              
-             ContentTemplate="{DataTemplate pages:BasketPage}" />
+             ContentTemplate="{DataTemplate pages:BasketPageView}" />
         <ShellContent Title="Profile" Route="profile"
                      
                      ContentTemplate="{DataTemplate pages:ProfilePage}" />
