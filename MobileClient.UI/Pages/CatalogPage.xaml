@@ -4,6 +4,11 @@
              x:Class="MobileClient.UI.Pages.CatalogPage"
              xmlns:models="clr-namespace:MobileClient.Contract;assembly=MobileClient.Contract"
              Title="CatalogPage">
+
+    <VerticalStackLayout>
+        <Button Clicked="SaveButtonClickAsync" Text="Save" WidthRequest="100" HorizontalOptions="Start" />
+    
+    
     <CollectionView ItemsSource="{Binding Products}" SelectionMode="Single" SelectionChanged="OnCollectionViewSelectionChangedAsync">
         <CollectionView.Header>
             <Label Text= "Список" FontSize="18" FontAttributes="Bold" />
@@ -39,4 +44,5 @@
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
+    </VerticalStackLayout>
 </ContentPage>

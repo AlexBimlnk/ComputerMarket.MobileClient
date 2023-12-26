@@ -13,7 +13,6 @@ using MobileClient.Logic.Orders;
 using MobileClient.Logic.Products;
 using MobileClient.Logic.Providers;
 
-using static AndroidX.ConstraintLayout.Core.Motion.Utils.HyperSpline;
 
 
 namespace MobileClient.UI.Pages;
@@ -97,9 +96,11 @@ public partial class HomePage : ContentPage
         var a = await _providerAccessor.GetOrdersRelatedWithAuthProviderAsync();
     }*/
 
+#pragma warning disable CA1822 // Mark members as static
     public ICommand ItemChangedCommand => new Command<ItemType>(
-        async (item) => await HomePage.GoToCatalogAsync(item ?? throw new ArgumentNullException())
+        async (item) => await GoToCatalogAsync(item ?? throw new ArgumentNullException())
     );
+#pragma warning restore CA1822 // Mark members as static
 
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)

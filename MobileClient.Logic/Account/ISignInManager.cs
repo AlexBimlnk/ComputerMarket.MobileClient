@@ -1,12 +1,15 @@
-﻿namespace MobileClient.Logic.Account;
+﻿using MobileClient.Contract;
+using MobileClient.Contract.AccountController;
+
+namespace MobileClient.Logic.Account;
 
 public interface ISignInManager
 {
-    public bool IsLoggedIn { get; set; }
+    public Task<User?> GetCurrentUserAsync();
 
-    public Task RegisterAsync() => throw new NotImplementedException();
+    public Task RegisterAsync(Register model);
 
-    public Task LoginAsync() => throw new NotImplementedException();
+    public Task LoginAsync(Login model);
 
-    public Task LogOutAsync() => throw new NotImplementedException();
+    public Task LogOutAsync();
 }

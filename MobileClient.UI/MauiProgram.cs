@@ -9,6 +9,7 @@ using MobileClient.UI;
 using MobileClient.UI.Pages;
 
 using MobileClient.UI.Pages;
+using MobileClient.UI.Pages.Views;
 
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
@@ -52,6 +53,8 @@ public static class MauiProgram
             .Services.AddMyServices(builder.Configuration)
             .AddSingleton<CatalogPage>()
             .AddSingleton<ProfilePage>()
+            .AddSingleton<FilterPage>()
+            .AddSingleton<LoginPage>()
             .AddSingleton<HomePage>();
 
 

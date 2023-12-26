@@ -18,8 +18,9 @@ public partial class ProfilePage : ContentPage, INotifyPropertyChanged
         BindingContext = this;
 	}
 
-    protected override void OnNavigatedTo(NavigatedToEventArgs args) {
-        if (_signInManager.IsLoggedIn)
+    protected async override void OnNavigatedTo(NavigatedToEventArgs args) {
+        var user = await _signInManager.GetCurrentUserAsync() ?? throw new Exception();
+        if (user.Type == Contract.UserType.Manager)
         {
             PositionSelected = 0;
         }

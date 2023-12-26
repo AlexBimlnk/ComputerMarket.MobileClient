@@ -20,7 +20,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(SignaturePage), typeof(SignaturePage));
         Routing.RegisterRoute(nameof(ReceiptPage), typeof(ReceiptPage));
         Routing.RegisterRoute(nameof(ProductPage), typeof(ProductPage));
-        Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
+        Routing.RegisterRoute(nameof(FilterPage), typeof(FilterPage));
     }
 
     private string _selectedRoute;

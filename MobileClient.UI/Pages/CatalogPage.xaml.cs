@@ -4,7 +4,6 @@ using MobileClient.Contract;
 using MobileClient.Contract.Products;
 using MobileClient.Logic.Account;
 using MobileClient.Logic.Products;
-using MobileClient.UI.Pages.Viewsl;
 
 namespace MobileClient.UI.Pages;
 
@@ -34,7 +33,6 @@ public partial class CatalogPage : ContentPage
     {
         var task = await _productsAccessor.GetCatalogAsync(s_catalog);
 
-
         Products.Clear();
 
         foreach(var pr in task.Products)
@@ -43,11 +41,19 @@ public partial class CatalogPage : ContentPage
         }
     }
 
+    private async void SaveButtonClickAsync(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(FilterPage), true, new Dictionary<string, object>
+        {
+            ["Catalog"] = Catalog
+        });
+    }
+
     public async void OnCollectionViewSelectionChangedAsync(object sender, SelectionChangedEventArgs e) 
     {
         if (e.CurrentSelection.FirstOrDefault() is not Product item)
             return;
-        _manager.IsLoggedIn = !_manager.IsLoggedIn;
+        await _manager.LogOutAsync();
         await Shell.Current.GoToAsync(nameof(ProductPage), true, new Dictionary<string, object>
         {
             ["Product"] = item

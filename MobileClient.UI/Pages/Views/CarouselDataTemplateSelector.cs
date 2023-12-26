@@ -7,8 +7,8 @@ public class CarouselDataTemplateSelector : DataTemplateSelector
 
     public CarouselDataTemplateSelector()
     {
-        Tab1 = new DataTemplate(typeof(ProfileInfoView));
-        Tab2 = new DataTemplate(typeof(LoginView));
+        Tab1 = new DataTemplate(typeof(ManagerUserView));
+        Tab2 = new DataTemplate(typeof(SimpleUserView));
     }
 
     protected override DataTemplate OnSelectTemplate(object item, BindableObject container)

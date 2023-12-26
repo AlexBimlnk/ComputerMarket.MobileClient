@@ -5,6 +5,9 @@
              xmlns:pages="clr-namespace:MobileClient.UI.Pages"
              x:Class="MobileClient.UI.AppShellMobile"
              Title="AppShellMobile">
+    <ShellContent Title="Login" Route="Login">
+        <pages:LoginPage />
+    </ShellContent>
     <TabBar>
         <ShellContent Title="Home" Route="home"
                      

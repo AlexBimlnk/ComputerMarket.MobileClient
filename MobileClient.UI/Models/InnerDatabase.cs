@@ -1,10 +1,11 @@
-﻿using MobileClient.Logic.Data.Models;
+﻿using MobileClient.Logic.Data;
+using MobileClient.Logic.Data.Models;
 
 using SQLite;
 
-namespace MobileClient.Logic.Data;
+namespace MobileClient.UI.Models;
 
-public sealed class Inner_database
+public sealed class InnerDatabase: IInnerDatabase
 {
     private SQLiteAsyncConnection _database;
 

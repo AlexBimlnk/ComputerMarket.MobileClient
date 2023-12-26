@@ -4,6 +4,7 @@ using MobileClient.Logic.Account;
 using MobileClient.Logic.Basket;
 using MobileClient.Logic.Builder;
 using MobileClient.Logic.Configuration;
+using MobileClient.Logic.Data;
 using MobileClient.Logic.Links;
 using MobileClient.Logic.Orders;
 using MobileClient.Logic.Products;
@@ -31,6 +32,7 @@ public static class Registration
             .AddSingleton<IReportsAccessor, ReportsAccessor>()
             .AddSingleton<IProviderAccessor, ProviderAccessor>()
             .AddSingleton<IProductsAccessor, ProductsAccessor>()
+            .AddSingleton<IInnerDatabase, InnerDatabase>()
             .AddSingleton<ISignInManager, SignInManager>()
             .AddSingleton<IBuilderAccessor, BuilderAccessor>();
 

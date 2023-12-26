@@ -1,4 +1,4 @@
-﻿namespace MobileClient.Logic.Data;
+﻿namespace MobileClient.UI;
 
 public static class Constants
 {
@@ -13,5 +13,5 @@ public static class Constants
         SQLite.SQLiteOpenFlags.SharedCache;
 
     public static string DatabasePath =>
-        Path.Combine(DATABASE_FILENAME);
+        Path.Combine(FileSystem.Current.AppDataDirectory, DATABASE_FILENAME);
 }

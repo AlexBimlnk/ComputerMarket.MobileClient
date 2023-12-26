@@ -1,5 +1,12 @@
-﻿namespace MobileClient.Logic.Data;
+﻿using MobileClient.Logic.Data.Models;
 
-public interface IInner_database
+namespace MobileClient.Logic.Data;
+
+public interface IInnerDatabase
 {
+    public Task<List<UserModel>> GetItemsAsync();
+
+    public Task<int> SaveItemAsync(UserModel item);
+
+    public Task<int> DeleteItemAsync(UserModel item);
 }

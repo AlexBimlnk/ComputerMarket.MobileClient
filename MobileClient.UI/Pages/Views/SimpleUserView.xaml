@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileClient.UI.Pages.Views.LoginView"
-             VerticalOptions="FillAndExpand">
+             x:Class="MobileClient.UI.Pages.Views.SimpleUserView">
     <VerticalStackLayout>
         <Label 
-            Text="LogIn"
+            Text="SimpleUser"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

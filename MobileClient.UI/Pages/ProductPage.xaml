@@ -11,18 +11,18 @@
                          Spacing="10"
                          VerticalOptions="StartAndExpand">
             <Image Grid.RowSpan="3"
-Source="{Binding Item.URL}"
-Aspect="AspectFill"
-HeightRequest="60"
-WidthRequest="60" />
+                Source="{Binding Item.URL}"
+                Aspect="AspectFill"
+                HeightRequest="60"
+                WidthRequest="60" />
             <Label Grid.Column="1"
-Text="{Binding Item.Name}"
-FontAttributes="Bold" />
+                Text="{Binding Item.Name}"
+                FontAttributes="Bold" />
             <Label Grid.Row="1"
-Grid.Column="1"
-Text="{Binding Provider.Name}"
-FontAttributes="Italic"
-VerticalOptions="End" />
+                Grid.Column="1"
+                Text="{Binding Provider.Name}"
+                FontAttributes="Italic"
+                VerticalOptions="End" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
