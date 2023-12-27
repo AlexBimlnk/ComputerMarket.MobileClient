@@ -1,7 +1,6 @@
 ﻿using MobileClient.Logic.Account;
 using MobileClient.UI.Helpers;
 using MobileClient.UI.Pages;
-using MobileClient.UI.Pages.Handheld;
 
 namespace MobileClient.UI;
 
@@ -18,15 +17,12 @@ public partial class AppShellMobile : Shell
 
     private void InitRoutes()
     {
-        Routing.RegisterRoute(nameof(OrderDetailsPage), typeof(OrderDetailsPage));
-        Routing.RegisterRoute(nameof(TipPage), typeof(TipPage));
-        Routing.RegisterRoute(nameof(PayPage), typeof(PayPage));
-        Routing.RegisterRoute(nameof(SignaturePage), typeof(SignaturePage));
-        Routing.RegisterRoute(nameof(ReceiptPage), typeof(ReceiptPage));
         Routing.RegisterRoute(nameof(CatalogProductPageView), typeof(CatalogProductPageView));
         Routing.RegisterRoute(nameof(FilterPageView), typeof(FilterPageView));
         Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
         Routing.RegisterRoute(nameof(LinkPage), typeof(LinkPage));
+        Routing.RegisterRoute(nameof(OrderPageView), typeof(OrderPageView));
+        Routing.RegisterRoute(nameof(OrdersPageView), typeof(OrdersPageView));
     }
 
     public bool IsLogged
@@ -36,7 +32,7 @@ public partial class AppShellMobile : Shell
     }
 
     public static readonly BindableProperty IsLoggedProperty =
-        BindableProperty.Create(nameof(IsLogged), typeof(bool), typeof(AppShell), false, propertyChanged: IsLogged_PropertyChangedAsync);
+        BindableProperty.Create(nameof(IsLogged), typeof(bool), typeof(AppShellMobile), false, propertyChanged: IsLogged_PropertyChangedAsync);
 
     private async static void IsLogged_PropertyChangedAsync(BindableObject bindable, object oldValue, object newValue)
     {

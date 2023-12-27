@@ -19,9 +19,13 @@ public class ProfileViewModel: INotifyPropertyChanged
         {
             PositionSelected = 0;
         }
-        else
+        else if (user.Type == Contract.UserType.Customer)
         {
             PositionSelected = 1;
+        }
+        else
+        {
+            PositionSelected = 2;
         }
     }
 

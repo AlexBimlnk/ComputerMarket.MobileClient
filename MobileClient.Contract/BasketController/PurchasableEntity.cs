@@ -23,4 +23,6 @@ public sealed class PurchasableEntity
 
     [JsonProperty("isApproved")]
     public bool? IsApproved { get; set; }
+
+    public decimal SumCost => Quantity * Product.FinalCost;
 }

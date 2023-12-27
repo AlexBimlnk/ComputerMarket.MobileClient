@@ -37,5 +37,5 @@ public sealed class Order
     /// Метод высчитывающий итоговую стоимость заказа.
     /// </summary>
     /// <returns xml:lang = "ru">Итоговая стоимость.</returns>
-    public decimal GetSumCost() => Items.Sum(x => x.Product.FinalCost * x.Quantity);
+    public decimal Sum => Items.Sum(x => x.Product.FinalCost * x.Quantity);
 }

@@ -15,6 +15,19 @@ public class ProfilePageView : ContentPage
             {"CarouselDataTemplateSelector",  new CarouselDataTemplateSelector()}
         };
 
+        var orders = new Button
+        {
+            WidthRequest = 200,
+            Text = "Заказы"
+        };
+        orders.Clicked += async (sender, e) => await Shell.Current.GoToAsync(nameof(OrdersPageView), true, new Dictionary<string, object>());
+
+        var separator = new BoxView
+        {
+            Color = Colors.DarkBlue,
+            HeightRequest = 1
+        };
+
         var greeting = new Label
         {
             FontSize = 20,
@@ -26,14 +39,14 @@ public class ProfilePageView : ContentPage
             ItemTemplate = Resources["CarouselDataTemplateSelector"] as CarouselDataTemplateSelector,
             IsSwipeEnabled = false,
             IsScrollAnimated = false
-        }.ItemsSource(new string[] {"1", "2" }).Bind(
+        }.ItemsSource(new string[] {"1", "2", "3" }).Bind(
             CarouselView.PositionProperty,
             "PositionSelected");
 		Content = new VerticalStackLayout
 		{
 			Children = {
-				greeting, view
-			}
+				greeting, orders, separator, view
+            }
 		};
 	}
 

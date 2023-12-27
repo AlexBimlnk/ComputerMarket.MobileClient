@@ -6,15 +6,8 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        App.Current.UserAppTheme = AppTheme.Dark;
+        Current.UserAppTheme = AppTheme.Dark;
 
-        if (DeviceInfo.Idiom == DeviceIdiom.Phone ||  true)
-        {
-            MainPage = new AppShellMobile();
-        }
-        else
-        {
-            MainPage = new AppShell();
-        }
+        MainPage = new AppShellMobile();
     }
 }

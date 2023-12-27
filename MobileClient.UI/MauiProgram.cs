@@ -51,15 +51,9 @@ public static class MauiProgram
                 fonts.AddFont("fabmdl2.ttf", "Fabric");
             })
             .Services.AddMyServices(builder.Configuration)
-            .AddSingleton<CatalogPage>()
-            .AddSingleton<ProfilePage>()
-            .AddSingleton<FilterPage>()
             .AddSingleton<LoginPage>()
-            .AddSingleton<BasketPage>()
-            .AddSingleton<ProductPage>()
             .AddSingleton<LinkPage>()
-            .AddSingleton<RegisterPage>()
-            .AddSingleton<HomePage>();
+            .AddSingleton<RegisterPage>();
 
 
 #if WINDOWS
