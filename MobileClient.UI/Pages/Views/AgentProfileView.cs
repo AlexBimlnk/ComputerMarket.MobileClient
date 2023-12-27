@@ -9,20 +9,6 @@ public class AgentProfileView : ContentView
 {
 	public AgentProfileView()
 	{
-        BindingContext = ServiceHelper.GetService<UserProfileViewModel>();
-
-        var greeting = new Label
-        {
-            FontSize = 34,
-            VerticalOptions = LayoutOptions.Center,
-            HorizontalOptions = LayoutOptions.Center
-        }.Bind(Label.TextProperty, "Greeting");
-
-        Content = new VerticalStackLayout
-        {
-            Children = {
-                greeting
-            }
-        };
+        
     }
 }

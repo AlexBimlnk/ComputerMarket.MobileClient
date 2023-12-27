@@ -1,24 +1,19 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows.Input;
-
-using CommunityToolkit.Maui.Markup;
 
 using MobileClient.Logic.Account;
 
-namespace MobileClient.UI.Pages;
-
-public partial class ProfilePage : ContentPage, INotifyPropertyChanged
+namespace MobileClient.UI.Pages.Models;
+public class ProfileViewModel: INotifyPropertyChanged
 {
     private readonly ISignInManager _signInManager;
-
-	public ProfilePage(ISignInManager manager)
-	{
-		InitializeComponent();
+    public ProfileViewModel(ISignInManager manager)
+    {
         _signInManager = manager;
-        BindingContext = this;
-	}
+    }
 
-    protected async override void OnNavigatedTo(NavigatedToEventArgs args) {
+    public async Task CheckUserAsync()
+    {
         var user = await _signInManager.GetCurrentUserAsync() ?? throw new Exception();
         if (user.Type == Contract.UserType.Manager)
         {
@@ -30,6 +25,16 @@ public partial class ProfilePage : ContentPage, INotifyPropertyChanged
         }
     }
 
+    public string Greetings { get; set; } = "Привет!";
+
+    public async Task UpdateUserAsync()
+    {
+        var user = await _signInManager.GetCurrentUserAsync();
+
+        Greetings = $"Привет, {user.AuthenticationData.Login}!";
+
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Greetings)));
+    }
 
     public ICommand SelectItemCommand => new Command<string>((param) => PositionSelected = int.Parse(param));
 

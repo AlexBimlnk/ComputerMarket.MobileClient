@@ -1,7 +1,7 @@
 ﻿using MobileClient.Contract.Products;
 using MobileClient.Contract;
 using MobileClient.Logic.Products;
-using Android.Webkit;
+
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 

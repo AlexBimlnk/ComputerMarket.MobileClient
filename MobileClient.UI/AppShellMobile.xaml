@@ -20,6 +20,6 @@
              ContentTemplate="{DataTemplate pages:BasketPageView}" />
         <ShellContent Title="Profile" Route="profile"
                      
-                     ContentTemplate="{DataTemplate pages:ProfilePage}" />
+                     ContentTemplate="{DataTemplate pages:ProfilePageView}" />
     </TabBar>
 </Shell>
