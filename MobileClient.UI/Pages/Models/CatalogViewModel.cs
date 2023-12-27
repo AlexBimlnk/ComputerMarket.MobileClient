@@ -1,13 +1,13 @@
-﻿using MobileClient.Contract.Products;
-using MobileClient.Contract;
-using MobileClient.Logic.Products;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+
+using MobileClient.Contract;
+using MobileClient.Contract.Products;
+using MobileClient.Logic.Products;
 
 namespace MobileClient.UI.Pages.Models;
 
-public class CatalogViewModel: IQueryAttributable, INotifyPropertyChanged
+public class CatalogViewModel : IQueryAttributable, INotifyPropertyChanged
 {
     private readonly IProductsAccessor _productsAccessor;
     private static Catalog s_catalog = new();
@@ -16,7 +16,7 @@ public class CatalogViewModel: IQueryAttributable, INotifyPropertyChanged
 
     public CatalogViewModel(IProductsAccessor productsAccessor)
     {
-            _productsAccessor = productsAccessor ?? throw new ArgumentNullException();
+        _productsAccessor = productsAccessor ?? throw new ArgumentNullException();
     }
 #pragma warning disable CA1822 // Mark members as static
     public Catalog Catalog { get => s_catalog; set => s_catalog = value; }

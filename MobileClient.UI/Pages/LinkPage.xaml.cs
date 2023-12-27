@@ -7,11 +7,11 @@ public partial class LinkPage : ContentPage
 {
     private readonly ILinksAccessor _linksAccessor;
     public LinkPage(ILinksAccessor linksAccessor)
-	{
+    {
         _linksAccessor = linksAccessor;
 
         InitializeComponent();
-	}
+    }
 
     public ObservableCollection<Link> Links { get; set; } = new();
 
@@ -29,6 +29,6 @@ public partial class LinkPage : ContentPage
 
     private async void SaveButtonClickAsync(object sender, EventArgs e)
     {
-        
+
     }
 }

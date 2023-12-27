@@ -9,16 +9,16 @@
         <pages:LoginPage />
     </ShellContent>
     <TabBar>
-        <ShellContent Title="Home" Route="home"
+        <ShellContent Title="Главная" Route="home"
                      
                      ContentTemplate="{DataTemplate pages:HomePageView}" />
-        <ShellContent Title="Catalog" Route="catalog"
+        <ShellContent Title="Каталог" Route="catalog"
              
              ContentTemplate="{DataTemplate pages:CatalogPageView}" />
-        <ShellContent Title="Basket" Route="basket"
+        <ShellContent Title="Корзина" Route="basket"
              
              ContentTemplate="{DataTemplate pages:BasketPageView}" />
-        <ShellContent Title="Profile" Route="profile"
+        <ShellContent Title="Профиль" Route="profile"
                      
                      ContentTemplate="{DataTemplate pages:ProfilePageView}" />
     </TabBar>

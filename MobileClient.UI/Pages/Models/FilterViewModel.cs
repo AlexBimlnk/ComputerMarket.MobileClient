@@ -2,13 +2,12 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-using MobileClient.Contract;
 using MobileClient.Contract.Products;
 using MobileClient.Logic.Products;
 
 namespace MobileClient.UI.Pages.Models;
 
-public class FilterViewModel: IQueryAttributable, INotifyPropertyChanged
+public class FilterViewModel : IQueryAttributable, INotifyPropertyChanged
 {
     private readonly IProductsAccessor _productsAccessor;
 

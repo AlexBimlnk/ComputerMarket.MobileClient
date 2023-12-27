@@ -2,12 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileClient.UI.Pages.RegisterPage"
-             Title="RegisterPage">
+             Title="Регистрация">
     <StackLayout Orientation="Vertical">
-        <Entry x:Name="emailEntry" Margin="5" Placeholder = "Enter email" />
-        <Entry x:Name="loginEntry" Margin="5" Placeholder = "Enter login" />
-        <Entry x:Name="passwordEntry" Margin="5" Placeholder = "Enter password" />
-        <Entry x:Name="repeatEntry" Margin="5" Placeholder = "Repeat password" />
-        <Button Clicked="SaveButtonClickedAsync" Text="Enter" WidthRequest="100" HorizontalOptions="Start" />
+        <Entry x:Name="emailEntry" Margin="5" Placeholder = "Почта" HorizontalOptions="Start" WidthRequest="300" HeightRequest="50" FontSize="30"/>
+        <Entry x:Name="loginEntry" Margin="5" Placeholder = "Логин" HorizontalOptions="Start" WidthRequest="300" HeightRequest="50" FontSize="30"/>
+        <Entry x:Name="passwordEntry" Margin="5" Placeholder = "Пароль" HorizontalOptions="Start" WidthRequest="300" HeightRequest="50" FontSize="30" IsPassword="True"/>
+        <Entry x:Name="repeatEntry" Margin="5" Placeholder = "Пароль ещё раз" HorizontalOptions="Start" WidthRequest="300" HeightRequest="50" FontSize="30" IsPassword="True"/>
+        <Button Clicked="SaveButtonClickedAsync" Text="Вход" WidthRequest="150" HorizontalOptions="Start" Margin="10" FontSize="20"/>
+        <Button Clicked="RegisterClikcAsync" Text="Поставщик" WidthRequest="150" HorizontalOptions="Start" Margin="10" FontSize="20"/>
     </StackLayout>
 </ContentPage>

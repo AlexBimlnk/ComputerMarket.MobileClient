@@ -6,10 +6,10 @@ public class ProviderRegisterViewModel
 {
     private readonly IProviderAccessor _providerAccessor;
 
-	public ProviderRegisterViewModel(IProviderAccessor provider)
-	{
-        _providerAccessor = provider;	
-	}
+    public ProviderRegisterViewModel(IProviderAccessor provider)
+    {
+        _providerAccessor = provider;
+    }
 
     public string INN { get; set; }
     public string Name { get; set; }

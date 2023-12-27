@@ -4,7 +4,7 @@ using System.Windows.Input;
 using MobileClient.Logic.Account;
 
 namespace MobileClient.UI.Pages.Models;
-public class ProfileViewModel: INotifyPropertyChanged
+public class ProfileViewModel : INotifyPropertyChanged
 {
     private readonly ISignInManager _signInManager;
     public ProfileViewModel(ISignInManager manager)

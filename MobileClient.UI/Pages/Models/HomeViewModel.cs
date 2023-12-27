@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 using MobileClient.Contract;
 using MobileClient.Contract.Products;
@@ -15,7 +10,7 @@ public class HomeViewModel
     private readonly IProductsAccessor _productsAccessor;
     public HomeViewModel(IProductsAccessor productsAccessor)
     {
-        _productsAccessor  = productsAccessor ?? throw new ArgumentNullException();
+        _productsAccessor = productsAccessor ?? throw new ArgumentNullException();
     }
 
     public ObservableCollection<ItemType> Categories { get; set; } = new();

@@ -1,30 +1,40 @@
-using CommunityToolkit.Maui.Markup;
+ï»¿using CommunityToolkit.Maui.Markup;
 
 using MobileClient.UI.Pages.Models;
+
+using static CommunityToolkit.Maui.Markup.GridRowsColumns;
 
 namespace MobileClient.UI.Pages;
 
 public class BasketPageView : ContentPage
 {
-	public BasketPageView(BasketViewModel model)
-	{
+    public BasketPageView(BasketViewModel model)
+    {
+        Title = "ÐšÐ¾Ñ€Ð·Ð¸Ð½Ð°";
         BindingContext = model;
         var button = new Button
         {
-            Text = "Çàêàç",
+            Text = "Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ",
             WidthRequest = 200,
-            HorizontalOptions = LayoutOptions.Start
-        };
+            HorizontalOptions = LayoutOptions.Start,
+            Margin = 30,
+            FontSize = 15
 
+        };
+        var separator = new BoxView
+        {
+            Color = Colors.LightGray,
+            HeightRequest = 1,
+            Margin = 20
+        };
         button.Clicked += async (o, e) => await (BindingContext as BasketViewModel).CreateAsync();
 
         var view = new CollectionView
         {
-            Header = new Label
+            EmptyView = new Label
             {
-                FontSize = 30,
-                FontAttributes = FontAttributes.Bold,
-                Text = "Êîðçèíà"
+                FontSize = 20,
+                Text = "ÐšÐ¾Ñ€Ð·Ð¸Ð½Ð° Ð¿ÑƒÑÑ‚Ð°Ñ"
             }
         }.ItemsSource((BindingContext as BasketViewModel).Products);
 
@@ -44,7 +54,10 @@ public class BasketPageView : ContentPage
                 {
 
                 }.Bind(Label.TextProperty, "Quantity");
+                var cost = new Label
+                {
 
+                }.Bind(Label.TextProperty, "SumCost", stringFormat: "{0:0.00} â‚¸");
                 var add = new Button
                 {
                     Text = "+",
@@ -57,27 +70,43 @@ public class BasketPageView : ContentPage
                 }.Bind(Button.CommandParameterProperty, Binding.SelfPath);
                 var delete = new Button
                 {
-                    Text = "Óäàëèòü",
+                    Text = "X",
                     Command = (BindingContext as BasketViewModel).DeleteCommand
                 }.Bind(Button.CommandParameterProperty, Binding.SelfPath);
 
-                var layout = new VerticalStackLayout
+                var layout = new Grid
                 {
-                    Padding = 20,
-                    Children = { product, provider, quantity, add, remove, delete }
+                    Padding = 10,
+                    RowDefinitions = Rows.Define(Auto, Auto, Auto),
+                    ColumnDefinitions = Columns.Define(Auto, Auto, Auto, 60, Auto),
+                    Children =
+                    {
+                        product.ColumnSpan(2),
+                        provider.ColumnSpan(2).Row(1),
+                        cost.RowSpan(2).Column(4),
+                        add.Row(2),
+                        quantity.Row(2).Column(1),
+                        remove.Row(2).Column(2),
+                        delete.Row(2).Column(4)
+
+                    }
                 };
 
                 return layout;
             }
         };
 
-		Content = new VerticalStackLayout
-		{
-			Children = {
-				button, view
-			}
-		};
-	}
+        Content = new VerticalStackLayout
+        {
+            Children = {
+                button, separator,new ScrollView
+                {
+                    Content = view
+                }
 
-    protected async override void OnNavigatedTo(NavigatedToEventArgs args) => await(BindingContext as BasketViewModel).ReloadDataAsync();
+            }
+        };
+    }
+
+    protected async override void OnNavigatedTo(NavigatedToEventArgs args) => await (BindingContext as BasketViewModel).ReloadDataAsync();
 }

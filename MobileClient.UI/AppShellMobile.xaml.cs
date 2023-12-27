@@ -23,6 +23,7 @@ public partial class AppShellMobile : Shell
         Routing.RegisterRoute(nameof(LinkPage), typeof(LinkPage));
         Routing.RegisterRoute(nameof(OrderPageView), typeof(OrderPageView));
         Routing.RegisterRoute(nameof(OrdersPageView), typeof(OrdersPageView));
+        Routing.RegisterRoute(nameof(ProviderRegisterPageView), typeof(ProviderRegisterPageView));
     }
 
     public bool IsLogged
@@ -57,7 +58,7 @@ public partial class AppShellMobile : Shell
         {
             return;
         }
-        
+
         (Shell.Current as AppShellMobile).IsLogged = true;
         await Shell.Current.GoToAsync("///home");
     }

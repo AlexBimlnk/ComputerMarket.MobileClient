@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-using MobileClient.Contract;
+﻿using MobileClient.Contract;
 using MobileClient.Contract.AccountController;
 using MobileClient.Logic.Data;
 using MobileClient.Logic.Data.Models;
@@ -32,10 +30,10 @@ public sealed class SignInManager : ISignInManager
         {
             Key = new ID()
             {
-               Value = storage.Id
+                Value = storage.Id
             },
             Type = (UserType)storage.UserType,
-            AuthenticationData = new AuthenticationData() 
+            AuthenticationData = new AuthenticationData()
             {
                 Email = storage.Email,
                 Login = storage.Login,
@@ -44,14 +42,14 @@ public sealed class SignInManager : ISignInManager
                     Value = storage.Password
                 }
             }
-            
+
         };
 
         return result;
     }
 
-   
-        
+
+
 
     public SignInManager(ILoginHandler loginHandler, IInnerDatabase database)
     {

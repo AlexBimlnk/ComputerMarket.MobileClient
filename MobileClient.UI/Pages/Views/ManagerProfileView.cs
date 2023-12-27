@@ -1,14 +1,9 @@
-using CommunityToolkit.Maui.Markup;
-
-using MobileClient.UI.Helpers;
-using MobileClient.UI.Pages.Models;
-
 namespace MobileClient.UI.Pages.Views;
 
 public class ManagerProfileView : ContentView
 {
-	public ManagerProfileView()
-	{
+    public ManagerProfileView()
+    {
         var links = new Button
         {
             WidthRequest = 200,
@@ -17,10 +12,10 @@ public class ManagerProfileView : ContentView
         links.Clicked += async (o, e) => await Shell.Current.GoToAsync(nameof(LinkPage), true, new Dictionary<string, object>());
 
         Content = new VerticalStackLayout
-		{
-			Children = {
-				links
-			}
-		};
-	}
+        {
+            Children = {
+                links
+            }
+        };
+    }
 }

@@ -1,7 +1,7 @@
-using MobileClient.Contract.AccountController;
 using MobileClient.Contract;
-using MobileClient.UI.Helpers;
+using MobileClient.Contract.AccountController;
 using MobileClient.Logic.Account;
+using MobileClient.UI.Helpers;
 
 namespace MobileClient.UI.Pages;
 
@@ -38,4 +38,7 @@ public partial class RegisterPage : ContentPage
         IsVisible = false;
         await (Shell.Current as AppShellMobile).CheckUserAsync();
     }
+
+    private async void RegisterClikcAsync(object sender, EventArgs e) =>
+        await Shell.Current.GoToAsync(nameof(ProviderRegisterPageView), true, new Dictionary<string, object>());
 }

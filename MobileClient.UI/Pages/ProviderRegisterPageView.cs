@@ -6,10 +6,10 @@ namespace MobileClient.UI.Pages;
 
 public class ProviderRegisterPageView : ContentPage
 {
-	public ProviderRegisterPageView(ProviderRegisterViewModel model)
-	{
+    public ProviderRegisterPageView(ProviderRegisterViewModel model)
+    {
         BindingContext = model;
-        
+        Title = "Новый поставщик";
         var register = new Button
         {
             Text = "Зарегистрироваться"
@@ -49,10 +49,10 @@ public class ProviderRegisterPageView : ContentPage
             );
 
         Content = new VerticalStackLayout
-		{
-			Children = {
-				name, inn, account, register
-			}
-		};
-	}
+        {
+            Children = {
+                name, inn, account, register
+            }
+        };
+    }
 }

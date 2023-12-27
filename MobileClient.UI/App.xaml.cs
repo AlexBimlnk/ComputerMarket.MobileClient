@@ -6,7 +6,7 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        Current.UserAppTheme = AppTheme.Dark;
+        Current.UserAppTheme = AppTheme.Light;
 
         MainPage = new AppShellMobile();
     }

@@ -2,7 +2,6 @@
 
 using MobileClient.Contract;
 using MobileClient.Contract.BasketController;
-using MobileClient.Contract.Builder;
 using MobileClient.Logic.Configuration;
 using MobileClient.Logic.Transport;
 
@@ -49,7 +48,7 @@ public sealed class BasketAccessor : IBasketAccessor
         var result = await _httpClientFacade.PostAsync(
             $"{_serviceConfig.MarketService}/basket/api/create_order",
             content);
-        
+
         if (!result.IsSuccessStatusCode)
             throw new InvalidOperationException();
     }

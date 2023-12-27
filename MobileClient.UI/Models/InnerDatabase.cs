@@ -5,7 +5,7 @@ using SQLite;
 
 namespace MobileClient.UI.Models;
 
-public sealed class InnerDatabase: IInnerDatabase
+public sealed class InnerDatabase : IInnerDatabase
 {
     private SQLiteAsyncConnection _database;
 

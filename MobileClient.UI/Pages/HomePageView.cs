@@ -1,18 +1,23 @@
-using System.Windows.Input;
-
 using CommunityToolkit.Maui.Markup;
 
-using MobileClient.Contract;
-using MobileClient.Contract.Products;
 using MobileClient.UI.Pages.Models;
 
 namespace MobileClient.UI.Pages;
 
 public class HomePageView : ContentPage
 {
-	public HomePageView(HomeViewModel model)
-	{
+    public HomePageView(HomeViewModel model)
+    {
+        Title = "Главная";
         BindingContext = model;
+        var label = new Label
+        {
+            Text = "Категории",
+            FontSize = 22,
+            HorizontalOptions = LayoutOptions.Start,
+            Margin = 20,
+            FontAttributes = FontAttributes.Bold
+        };
         var view = new CarouselView().ItemsSource(model.Categories);
         view.ItemTemplate = new DataTemplate
         {
@@ -28,15 +33,17 @@ public class HomePageView : ContentPage
                 var image = new Image
                 {
                     Aspect = Aspect.AspectFill,
-                    HeightRequest = 150,
-                    WidthRequest = 150,
+                    HeightRequest = 200,
                     HorizontalOptions = LayoutOptions.Center
                 }.Bind(Image.SourceProperty, "URL");
 
                 var button = new Button
                 {
                     Text = "Перейти",
-                    Command = model.ItemChangedCommand
+                    Command = model.ItemChangedCommand,
+                    HorizontalOptions = LayoutOptions.Start,
+                    BackgroundColor = Colors.DarkBlue,
+                    Margin = 10
                 }
                 .Bind(Button.CommandParameterProperty, Binding.SelfPath);
 
@@ -45,22 +52,72 @@ public class HomePageView : ContentPage
                     Children = { title, image, button }
                 };
 
-                var result = new Frame()
+                var frame = new Frame()
                 {
                     HasShadow = true,
                     Margin = 20,
-                    HeightRequest = 300,
+                    HeightRequest = 350,
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Center,
                     Content = data
+
+                    /* Unmerged change from project 'MobileClient.UI (net8.0-maccatalyst)'
+                    Before:
+                                    };
+
+
+
+                                    return frame;
+                    After:
+                                    };
+
+
+
+                                    return frame;
+                    */
+
+                    /* Unmerged change from project 'MobileClient.UI (net8.0-ios)'
+                    Before:
+                                    };
+
+
+
+                                    return frame;
+                    After:
+                                    };
+
+
+
+                                    return frame;
+                    */
+
+                    /* Unmerged change from project 'MobileClient.UI (net8.0-windows10.0.19041.0)'
+                    Before:
+                                    };
+
+
+
+                                    return frame;
+                    After:
+                                    };
+
+
+
+                                    return frame;
+                    */
                 };
 
-                return result;
+
+
+                return frame;
             }
         };
 
-        Content = view;
-	}
+        Content = new StackLayout
+        {
+            Children = { label, view }
+        };
+    }
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs args) => await (BindingContext as HomeViewModel).ReloadDataAsync();
 }

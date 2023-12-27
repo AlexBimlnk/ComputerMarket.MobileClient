@@ -7,8 +7,9 @@ namespace MobileClient.UI.Pages;
 
 public class ProfilePageView : ContentPage
 {
-	public ProfilePageView(ProfileViewModel model)
-	{
+    public ProfilePageView(ProfileViewModel model)
+    {
+        Title = "Профиль";
         BindingContext = model;
         Resources = new ResourceDictionary
         {
@@ -17,21 +18,25 @@ public class ProfilePageView : ContentPage
 
         var orders = new Button
         {
-            WidthRequest = 200,
-            Text = "Заказы"
+            WidthRequest = 300,
+            Text = "Заказы",
+            HorizontalOptions = LayoutOptions.Center
         };
         orders.Clicked += async (sender, e) => await Shell.Current.GoToAsync(nameof(OrdersPageView), true, new Dictionary<string, object>());
 
         var separator = new BoxView
         {
-            Color = Colors.DarkBlue,
-            HeightRequest = 1
+            Color = Colors.LightGray,
+            HeightRequest = 1,
+            Margin = 20
         };
 
         var greeting = new Label
         {
             FontSize = 20,
-            FontAttributes = FontAttributes.Bold
+            FontAttributes = FontAttributes.Bold,
+            Margin = 30,
+            HorizontalOptions = LayoutOptions.Start,
         }
             .Bind(Label.TextProperty, "Greetings");
         var view = new CarouselView
@@ -39,16 +44,16 @@ public class ProfilePageView : ContentPage
             ItemTemplate = Resources["CarouselDataTemplateSelector"] as CarouselDataTemplateSelector,
             IsSwipeEnabled = false,
             IsScrollAnimated = false
-        }.ItemsSource(new string[] {"1", "2", "3" }).Bind(
+        }.ItemsSource(new string[] { "1", "2", "3" }).Bind(
             CarouselView.PositionProperty,
             "PositionSelected");
-		Content = new VerticalStackLayout
-		{
-			Children = {
-				greeting, orders, separator, view
+        Content = new VerticalStackLayout
+        {
+            Children = {
+                greeting, orders, separator, view
             }
-		};
-	}
+        };
+    }
 
     protected async override void OnNavigatedTo(NavigatedToEventArgs args) => await (BindingContext as ProfileViewModel).UpdateUserAsync();
 }

@@ -87,6 +87,7 @@ public static class Registration
             .AddSingleton<ProfilePageView>()
             .AddSingleton<OrdersPageView>()
             .AddSingleton<OrderPageView>()
+            .AddSingleton<ProviderRegisterPageView>()
             .AddSingleton<HomePageView>();
 
     private static IServiceCollection AddViewModels(this IServiceCollection services) =>
@@ -98,5 +99,6 @@ public static class Registration
             .AddSingleton<ProfileViewModel>()
             .AddSingleton<OrdersViewModel>()
             .AddSingleton<OrderViewModel>()
+            .AddSingleton<ProviderRegisterViewModel>()
             .AddSingleton<HomeViewModel>();
 }

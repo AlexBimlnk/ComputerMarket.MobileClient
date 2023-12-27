@@ -33,10 +33,22 @@ public partial class LoginPage : ContentPage
             return;
         }
 
-        IsVisible = false;                          
+        IsVisible = false;
         await (Shell.Current as AppShellMobile).CheckUserAsync();
     }
 
-    private async void RegisterClikcAsync(object sender, EventArgs e) => 
+    protected async override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        //await _manager.LoginAsync(new Login()
+        //{
+        //    Email = "manager@mail.ru",
+        //    Password = "12345678"
+        //});
+        //IsVisible = false;
+        var a = 2;
+        await (Shell.Current as AppShellMobile).CheckUserAsync();
+    }
+
+    private async void RegisterClikcAsync(object sender, EventArgs e) =>
         await Shell.Current.GoToAsync(nameof(RegisterPage), true, new Dictionary<string, object>());
 }

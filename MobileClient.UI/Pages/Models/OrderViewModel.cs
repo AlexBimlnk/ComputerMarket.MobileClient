@@ -1,13 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+
+using MobileClient.Contract.BasketController;
+
+
+
+/* Unmerged change from project 'MobileClient.UI (net8.0-maccatalyst)'
+Before:
 using MobileClient.Contract.Orders;
 using MobileClient.Logic.Orders;
 using Microsoft.Maui.Controls;
 using MobileClient.Contract;
+After:
+using MobileClient.Contract.Controls;
+using MobileClient.Contract;
 using MobileClient.Contract.BasketController;
+using MobileClient.Contract.Orders;
+*/
+
+/* Unmerged change from project 'MobileClient.UI (net8.0-ios)'
+Before:
+using MobileClient.Contract.Orders;
+using MobileClient.Logic.Orders;
+using Microsoft.Maui.Controls;
+using MobileClient.Contract;
+After:
+using MobileClient.Contract.Controls;
+using MobileClient.Contract;
+using MobileClient.Contract.BasketController;
+using MobileClient.Contract.Orders;
+*/
+
+/* Unmerged change from project 'MobileClient.UI (net8.0-windows10.0.19041.0)'
+Before:
+using MobileClient.Contract.Orders;
+using MobileClient.Logic.Orders;
+using Microsoft.Maui.Controls;
+using MobileClient.Contract;
+After:
+using MobileClient.Contract.Controls;
+using MobileClient.Contract;
+using MobileClient.Contract.BasketController;
+using MobileClient.Contract.Orders;
+*/
+using MobileClient.Contract.Orders;
+using MobileClient.Logic.Orders;
 
 namespace MobileClient.UI.Pages.Models;
 public class OrderViewModel : IQueryAttributable, INotifyPropertyChanged
@@ -33,8 +70,8 @@ public class OrderViewModel : IQueryAttributable, INotifyPropertyChanged
         {
 
         }
-        else if (Order.State is not (Contract.OrderState.Received or Contract.OrderState.Cancel)) 
-        { 
+        else if (Order.State is not (Contract.OrderState.Received or Contract.OrderState.Cancel))
+        {
             PayVisible = false;
         }
         else
@@ -43,7 +80,7 @@ public class OrderViewModel : IQueryAttributable, INotifyPropertyChanged
             CancelVisible = false;
         }
         Products.Clear();
-        foreach(var item in Order.Items)
+        foreach (var item in Order.Items)
         {
             Products.Add(item);
         }
@@ -62,7 +99,7 @@ public class OrderViewModel : IQueryAttributable, INotifyPropertyChanged
 
     public async Task CancelAsync()
     {
-        var answer = await Application.Current.MainPage.DisplayAlert("Question?", "Would you like to play game", "Yes", "No");
+        var answer = await Application.Current.MainPage.DisplayAlert("Отмена заказа", "Вы уверены?", "Да", "Нет");
 
         if (!answer)
         {
@@ -74,7 +111,7 @@ public class OrderViewModel : IQueryAttributable, INotifyPropertyChanged
 
     public async Task PayAsync()
     {
-        var result = await Application.Current.MainPage.DisplayPromptAsync("Question 1", "What's your name?");
+        var result = await Application.Current.MainPage.DisplayPromptAsync("Оплата заказа", "Введите номер счёта:");
 
         result = "12345123451234512345";
 

@@ -5,11 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Maui.LifecycleEvents;
 using Microsoft.Maui.Platform;
 
-using MobileClient.UI;
 using MobileClient.UI.Pages;
-
-using MobileClient.UI.Pages;
-using MobileClient.UI.Pages.Views;
 
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
