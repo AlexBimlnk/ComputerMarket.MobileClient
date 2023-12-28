@@ -57,28 +57,33 @@ public class OrderViewModel : IQueryAttributable, INotifyPropertyChanged
 
     public Order Order { get; set; }
     public ObservableCollection<PurchasableEntity> Products { get; set; } = new();
-    public bool PayVisible { get; set; } = true;
-    public bool CancelVisible { get; set; } = true;
+    public bool PayVisible { get; set; } = false;
+    public bool CancelVisible { get; set; } = false;
 
     public event PropertyChangedEventHandler PropertyChanged;
 
     public void Update()
     {
-        PayVisible = true;
-        CancelVisible = true;
+        PayVisible = false;
+        CancelVisible = false;
         if (Order.State == Contract.OrderState.PaymentWait)
         {
+            PayVisible = true;
+            CancelVisible = true;
+        }
+        else if (Order.State == Contract.OrderState.ProviderAnswerWait)
+        {
+            CancelVisible = true;
+        }
+        else if (Order.State == Contract.OrderState.ProductDeliveryWait)
+        {
+            CancelVisible = true;
+        }
+        else if (Order.State == Contract.OrderState.Ready)
+        {
+            CancelVisible = true;
+        }
 
-        }
-        else if (Order.State is not (Contract.OrderState.Received or Contract.OrderState.Cancel))
-        {
-            PayVisible = false;
-        }
-        else
-        {
-            PayVisible = false;
-            CancelVisible = false;
-        }
         Products.Clear();
         foreach (var item in Order.Items)
         {

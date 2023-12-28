@@ -58,7 +58,7 @@ public class CatalogProductViewModel : IQueryAttributable, INotifyPropertyChange
     public async Task AddToBasketAsync()
     {
         await _basket.AddOrIncreaseToBasketAsync(Product.Provider.Key.Value, Product.Item.Key.Value);
-        await Shell.Current.GoToAsync("//basket", true, new Dictionary<string, object>());
+        await UpdateBasketStateAsync();
     }
 
     public void OnPropertyChanged([CallerMemberName] string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));

@@ -129,10 +129,21 @@ public class OrderPageView : ContentPage
 
                 }.Bind(Label.TextProperty, "SumCost");
 
-                return new VerticalStackLayout
+                var layout = new Grid
                 {
-                    Children = { name, provider, quantity, cost }
+                    Padding = 10,
+                    RowDefinitions = Rows.Define(Auto, Auto, Auto),
+                    ColumnDefinitions = Columns.Define(Auto, Auto, Auto, 60, Auto),
+                    Children =
+                    {
+                        name.ColumnSpan(2),
+                        provider.ColumnSpan(2).Row(1),
+                        cost.RowSpan(2).Column(4),
+                        quantity.Row(2).Column(1)
+                    }
                 };
+
+                return layout;
 
             }
         };

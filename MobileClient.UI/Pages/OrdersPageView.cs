@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Input;
+
 using CommunityToolkit.Maui.Markup;
 
 using MobileClient.Contract.Orders;
@@ -107,11 +109,22 @@ public class OrdersPageView : ContentPage
                 return layout;
             }
         };
+        var refreshView = new RefreshView();
+        ICommand refreshCommand = new Command(async () =>
+        {
+            await (BindingContext as OrdersViewModel).ReloadDataAsync();
+            refreshView.IsRefreshing = false;
+        });
+        refreshView.Command = refreshCommand;
 
-        Content = new ScrollView
+        
+       
+        var sclrol = new ScrollView
         {
             Content = view
         };
+        refreshView.Content = sclrol;
+        Content = refreshView;
     }
 
     protected async override void OnNavigatedTo(NavigatedToEventArgs args) => await (BindingContext as OrdersViewModel).ReloadDataAsync();

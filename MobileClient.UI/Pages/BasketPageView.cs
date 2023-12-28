@@ -29,6 +29,30 @@ public class BasketPageView : ContentPage
         };
         button.Clicked += async (o, e) => await (BindingContext as BasketViewModel).CreateAsync();
 
+        var separator2 = new BoxView
+        {
+            Color = Colors.LightGray,
+            HeightRequest = 1,
+            Margin = 20
+        }.Bind(IsVisibleProperty, "CanCheck");
+
+        var check = new Button
+        {
+            Text = "Проверить",
+            WidthRequest = 200,
+            HorizontalOptions = LayoutOptions.Start,
+            Margin = 30,
+            FontSize = 15
+
+        }.Bind(IsVisibleProperty, "CanCheck");
+        check.Clicked += async (o, e) => await (BindingContext as BasketViewModel).CheckAsync();
+        var result = new Label
+        {
+            FontSize = 20,
+            Margin = 10,
+            FontAttributes = FontAttributes.Bold
+        }.Bind(IsVisibleProperty, "CanCheck").Bind(Label.TextProperty, "CheckResult");
+
         var view = new CollectionView
         {
             EmptyView = new Label
@@ -99,7 +123,7 @@ public class BasketPageView : ContentPage
         Content = new VerticalStackLayout
         {
             Children = {
-                button, separator,new ScrollView
+                button, separator, check, result, separator2, new ScrollView
                 {
                     Content = view
                 }
