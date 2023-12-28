@@ -39,14 +39,14 @@ public partial class LoginPage : ContentPage
 
     protected async override void OnNavigatedTo(NavigatedToEventArgs args)
     {
-        //await _manager.LoginAsync(new Login()
-        //{
-        //    Email = "manager@mail.ru",
-        //    Password = "12345678"
-        //});
-        //IsVisible = false;
-        var a = 2;
-        await (Shell.Current as AppShellMobile).CheckUserAsync();
+        var user = await _manager.GetCurrentUserAsync();
+        if (user is not null)
+        {
+            await (Shell.Current as AppShellMobile).CheckUserAsync();
+            IsVisible = false;
+            return;
+        }
+        IsVisible = true;
     }
 
     private async void RegisterClikcAsync(object sender, EventArgs e) =>

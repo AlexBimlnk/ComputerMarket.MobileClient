@@ -24,10 +24,12 @@ public sealed class Provider
     /// <summary xml:lang="ru">
     /// Подтвержден ли провайдер.
     /// </summary>
-    [JsonProperty("isApproved")]
+    [JsonProperty("isAproved")]
     public bool IsAproved { get; set; }
 
     /// <inheritdoc/>
     [JsonProperty("key")]
     public ID Key { get; set; }
+
+    public string ApproveState => (IsAproved ? "Approved" : "NotApproved");
 }

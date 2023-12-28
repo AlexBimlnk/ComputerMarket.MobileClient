@@ -27,6 +27,7 @@ public class ProfileViewModel : INotifyPropertyChanged
         {
             PositionSelected = 2;
         }
+        await UpdateUserAsync();
     }
 
     public string Greetings { get; set; } = "Привет!";

@@ -19,9 +19,20 @@ public class ProfilePageView : ContentPage
         var orders = new Button
         {
             WidthRequest = 300,
+            Margin = 30,
             Text = "Заказы",
             HorizontalOptions = LayoutOptions.Center
         };
+        var logout = new Button
+        {
+            WidthRequest = 300,
+            Margin = 30,
+            Text = "Выйти",
+            HorizontalOptions = LayoutOptions.Center,
+            VerticalOptions = LayoutOptions.End
+        };
+        logout.Clicked += async (o, e) => await (Shell.Current as AppShellMobile).LogOutAsync();
+
         orders.Clicked += async (sender, e) => await Shell.Current.GoToAsync(nameof(OrdersPageView), true, new Dictionary<string, object>());
 
         var separator = new BoxView
@@ -50,10 +61,10 @@ public class ProfilePageView : ContentPage
         Content = new VerticalStackLayout
         {
             Children = {
-                greeting, orders, separator, view
+                greeting, orders, separator, view, logout
             }
         };
     }
 
-    protected async override void OnNavigatedTo(NavigatedToEventArgs args) => await (BindingContext as ProfileViewModel).UpdateUserAsync();
+    protected async override void OnNavigatedTo(NavigatedToEventArgs args) => await (BindingContext as ProfileViewModel).CheckUserAsync();
 }

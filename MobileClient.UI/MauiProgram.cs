@@ -48,7 +48,6 @@ public static class MauiProgram
             })
             .Services.AddMyServices(builder.Configuration)
             .AddSingleton<LoginPage>()
-            .AddSingleton<LinkPage>()
             .AddSingleton<RegisterPage>();
 
 

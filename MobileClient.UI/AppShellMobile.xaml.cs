@@ -20,10 +20,16 @@ public partial class AppShellMobile : Shell
         Routing.RegisterRoute(nameof(CatalogProductPageView), typeof(CatalogProductPageView));
         Routing.RegisterRoute(nameof(FilterPageView), typeof(FilterPageView));
         Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
-        Routing.RegisterRoute(nameof(LinkPage), typeof(LinkPage));
+        Routing.RegisterRoute(nameof(LinksPageView), typeof(LinksPageView));
+        Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
         Routing.RegisterRoute(nameof(OrderPageView), typeof(OrderPageView));
         Routing.RegisterRoute(nameof(OrdersPageView), typeof(OrdersPageView));
         Routing.RegisterRoute(nameof(ProviderRegisterPageView), typeof(ProviderRegisterPageView));
+        Routing.RegisterRoute(nameof(ProvidersPageView), typeof(ProvidersPageView));
+        Routing.RegisterRoute(nameof(ProviderPageView), typeof(ProviderPageView));
+        Routing.RegisterRoute(nameof(AgentsPageView), typeof(AgentsPageView));
+        Routing.RegisterRoute(nameof(ProcessableOrderPageView), typeof(ProcessableOrderPageView));
+        Routing.RegisterRoute(nameof(ProcessableOrdersPageView), typeof(ProcessableOrdersPageView));
     }
 
     public bool IsLogged
@@ -61,5 +67,13 @@ public partial class AppShellMobile : Shell
 
         (Shell.Current as AppShellMobile).IsLogged = true;
         await Shell.Current.GoToAsync("///home");
+    }
+
+    public async Task LogOutAsync()
+    {
+        await _manager.LogOutAsync();
+        (Shell.Current as AppShellMobile).IsLogged = false;
+        SetTabBarIsVisible(Application.Current.MainPage, false);
+        await Shell.Current.GoToAsync(nameof(LoginPage), true, new Dictionary<string, object>());
     }
 }
